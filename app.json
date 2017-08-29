@@ -1,0 +1,2640 @@
+{
+		"id": "com.popp",
+		"sdk": 2,
+		"name": {
+				"en": "PoPP EU Z-Wave Products",
+				"nl": "PoPP EU Z-Wave Producten"
+		},
+		"description": {
+				"en": "PoPP EU Z-Wave products support for Homey @ Athom",
+				"nl": "PoPP EU Z-Wave product ondersteuning voor Homey @ Athom"
+		},
+		"images": {
+			"large": "/assets/images/large.jpg",
+			"small": "/assets/images/small.jpg"
+		},
+		"version": "2.0.0",
+		"compatibility": ">=1.5.0",
+		  "tags": {
+			"en": [
+			"scene controller",
+			"remote",
+			"remote control",
+			"central scene",
+			"scenes",
+			"motion detection",
+			"motion",
+			"alarm",
+			"door",
+			"window",
+			"sensor",
+			"switch",
+			"smart plug",
+			"USB",
+			"Weather",
+			"Rain",
+			"Wind"
+			"Valve"
+			],
+			"nl": [
+			"scene controller",
+			"afstandsbediening",
+			"central scene",
+			"scenes",
+			"bewegingsdetectie",
+			"beweging",
+			"alarm",
+			"deur",
+			"raam",
+			"sensor",
+			"schakelaar",
+			"USB",
+			"Weer",
+			"Regen"
+			"Wind",
+			"Ventiel"
+			]
+		},
+		"category": [
+					"appliances",
+					"lights",
+					"security",
+					"climate"
+					],
+		"author": {
+				"name": "Marco Ruiter",
+				"email": "mruiter@tuxweb.nl"
+		},
+		"capabilities": {
+			"measure_dewpoint": {
+					"type": "number",
+					"title": {
+						"en": "DewPoint",
+						"nl": "Dauwpunt"
+						},
+					"units": {
+						"en": "C"
+						},
+					"desc": {
+						"en": "Celius (C)",
+						"nl": "Celius (C)"
+						},
+					"chartType": "stepLine",
+					"decimals": 1,
+					"getable": true,
+					"setable": false
+					},
+			"alarm_rain": {
+					"type": "number",
+					"title": {
+						"en": "Rain Alarm",
+						"nl": "Regen Alarm"
+						},
+					"units": {
+						"en": "rain_status"
+						},
+					"desc": {
+						"en": "Rain Alarm",
+						"nl": "Regen Alarm"
+						},
+					"min": 0,
+					"max": 3,
+					"step": 1,
+					"getable": true,
+					"setable": false
+					}
+		},
+		"drivers": [
+			{
+			"id": "005107",
+			"mobile": {
+				"components":[
+					{
+					"id": "icon",
+					"capabilities": ["onoff"]
+					},
+					{
+					"id": "toggle",
+					"capabilities": ["onoff"],
+					"options": { "showTitle": true }
+					},
+					{
+					"id": "battery",
+					"capabilities": ["measure_battery" ],
+					"options": { "showTitle": true }
+					},
+					{
+					"id": "sensor",
+					"capabilities": [
+						"measure_temperature",
+						"alarm_tamper",
+						"alarm_battery"
+						]
+					}
+				]
+			},
+			"name": {
+					"en": "Solar Outdoor Siren",
+					"nl": "Solar Buiten Sirene"
+				},
+				"zwave": {
+					"manufacturerId": 340,
+					"productTypeId": 4,
+					"productId": 2,
+					"learnmode": {
+						"image": "/drivers/005107/assets/wakeup.svg",
+						"instruction": {
+							"en": "1. Open the case and turn on the power switch 2. Remove the metal mounting plate from the device. 3. Turn your controller into inclusion mode with a short single click on the internal inclusion button.",
+							"nl": "1. Open de behuizing en zet de sirenen aan met de schakelaar 2. Verwijder de metalen montageplaat van het apparaat. 3. Zet uw controller in inclusion mode en geef een korte enkele klik op de interne knop bij de schakelaar voor inclusion."
+						}
+				},
+					"associationGroups": [ 1 ],
+					"defaultConfiguration": [
+					{
+						"id": 1,
+						"size": 1,
+						"value": 1
+					},
+					{
+						"id": 5,
+						"size": 1,
+						"value": 1
+					},
+					{
+						"id": 6,
+						"size": 1,
+						"value": 0
+					}
+				]
+				},
+				"class": "other",
+				"capabilities": [ "onoff","alarm_tamper","measure_battery","measure_temperature","alarm_battery" ],
+				"images": {
+					"large": "/drivers/005107/assets/images/large.jpg",
+					"small": "/drivers/005107/assets/images/small.jpg"
+				},
+				"settings": [
+					{
+						"id": "siren_trigger_mode",
+						"type": "dropdown",
+						"values": [
+							{
+								"id": "0",
+								"label": {
+								"en": "Siren triggers when removed from holster. Must be turned off",
+								"nl": "Sirene gaat af zodra deze uit holster wordt genomen. Moet handmatig worden uitgezet"
+								}
+							},
+							{
+								"id": "1",
+								"label": {
+								"en": "Siren triggers when removed from holster. Turns off when placed back (standard)",
+								"nl": "Sirene gaat af zodra deze uit holster wordt genomen. Gaat uit bij terugplaatsing (standaard)"
+								}
+							},
+							{
+								"id": "2",
+								"label": {
+								"en": "Siren does not triggers when removed from holster. (Service Mode)",
+								"nl": "Sirene gaat niet af wanneer uit holster genomen. (Service Mode)"
+								}
+							}
+						],
+						"value": "1",
+						"label": {
+							"en": "Sabotage alarm setting",
+							"nl": "Sabotage alarm setting"
+							},
+						"hint": {
+						"en": "Change the way how the siren reacts when pulled of the wall",
+						"nl": "Aanpassen hoe de sirene reageerd als hij uit zijn holster wordt gehaald"
+						 }
+					 },
+					{
+						"id": "siren_alarm_mode",
+						"type": "dropdown",
+						"values": [
+							{
+								"id": "0",
+								"label": {
+								"en": "When Alarm only make sound",
+								"nl": "Bij Alarm alleen geluid"
+								}
+							},
+							{
+								"id": "1",
+								"label": {
+								"en": "When Alarm only blink lights (standard)",
+								"nl": "Bij Alarm alleen licht signalering (stanaard)"
+								}
+							},
+							{
+								"id": "2",
+								"label": {
+								"en": "When Alarm make sound an light",
+								"nl": "Bij Alarm zowel geluid als licht signalering"
+								}
+							}
+						],
+						"label": {
+						"en": "Alarm mode",
+						"nl": "Alarm mode"
+								},
+						"value": "1",
+						"hint": {
+						"en": "Change the way the alarm will go off",
+						"nl": "Pas aan hoe het alarm af gaat"
+							}
+					},
+					{
+						"id": "siren_auto_off",
+						"type": "number",
+						"attr": {
+							"min": 0,
+							"max": 30
+						},
+						"value": 0,
+						"label": {
+							"en": "Siren Auto Turnoff time",
+							"nl": "Automatische uitschakel tijd van sirene"
+						},
+						"hint": {
+							"en": "The amount of time before siren auto stops in minutes. (default: 0-UIT, range: 1 - 30)",
+							"nl": "De tijd dat de sirene afgaat in minuten voordat hij vanzelf uitgaat. (default: 0-UIT, range: 1 - 30)"
+						}
+					},
+					{
+						"id": "siren_temp_correction",
+						"value": 0,
+						"type": "number",
+						"label": {
+							"en": "Temperature Adjustment",
+							"nl": "Temperatuur Correctie"
+							},
+						"hint": {
+							"en": "Temperature correction. The given value changes the displayed temperature by 0.1C (-127 to 127)",
+							"nl": "Temperatuur correctie. De gegeven waarde verandert de weergegeven temperatuur met 0.1C (-127 tot 127)"
+							},
+						"attr": {
+							"min": 0,
+							"max": 255
+							}
+					},
+					{
+						"id": "siren_report_unsolicited",
+						"value": 10,
+						"label": {
+							"en": "Send unsolicited Temperature Report",
+							"nl": "Het sturen van ongevraagde Temperatuur Report"
+						},
+						"hint": {
+							"en": "Temperature Threshold to send unsolicited Temperature Update. 10= 1 Celcius",
+							"nl": "Temperature Threshold om ongevraagde temperatuur update te sturen. 10 = 1 Celsius"
+						},
+						"type": "number",
+						"attr": {
+							"min": 0,
+							"max": 255
+							}
+					},
+					{
+						"id": "siren_unsolicited_time",
+						"value": 15,
+						"label": {
+							"en": "Send unsolicited Temperature Report periodically after (N) wake up",
+							"nl": "Het sturen van ongevraagde Temperatuur Rapport periodiek na (N) wakker worden"
+						},
+						"hint": {
+							"en": "If the value is set, after N wake up number (measurement is every 4 minutes) the temperature report will be sent. By default it is 15 = every 1 hour",
+							"nl": "Als de waarde is ingesteld, nadat N wake up nummer (meting elke 4 minuten) wordt het temperatuur rapport verzonden. Standaard is 15 = elk 1 uur"
+						},
+						"type": "number",
+						"attr": {
+							"min": 0,
+							"max": 65535
+							}
+					}
+			]
+		},
+		{
+			"id": "004001",
+			"name": {
+				"en": "Smoke Detector and Siren",
+				"nl": "Rook Detector en Sirene"
+				},
+			"mobile": {
+				"components":[
+					{
+					"id": "icon",
+					"capabilities": ["onoff"]
+					},
+					{
+					"id": "toggle",
+					"capabilities": ["onoff"],
+					"options": { "showTitle": true }
+					},
+					{
+					"id": "battery",
+					"capabilities": ["measure_battery" ],
+					"options": { "showTitle": true }
+					},
+					{
+					"id": "sensor",
+					"capabilities": [ "alarm_smoke", "alarm_tamper", "alarm_battery" ]
+					}
+				]
+			},
+			"zwave": {
+				"manufacturerId": [ 340 ],
+				"productTypeId": [ 256 ],
+				"productId": [ 513 ],
+			"learnmode": {
+			"instruction": {
+				"en": "To Include, hit the little button on the wireless module for 1 second",
+				"nl": "Voor opname in Z-Wave netwerk 1 seconden op het kleine knopje drukken"
+				}
+			},
+			"associationGroups": [ 1, 2, 3 ],
+			"associationGroupsOptions": {
+				"1": {
+					"hint": {
+						"en": "Z-Wave Plus Lifeline"
+					}
+				},
+				"2": {
+					"hint": {
+						"en": "Alarm Reports"
+					}
+				},
+				"3": {
+					"hint": {
+						"en": "Switch Command when Alarm"
+						}
+					}
+				}
+			},
+			"class": "other",
+			"capabilities": [ "onoff","alarm_smoke","alarm_tamper","measure_battery","alarm_battery" ],
+			"images": {
+				"large": "/drivers/004001/assets/images/large.jpg",
+				"small": "/drivers/004001/assets/images/small.jpg"
+				},
+			"settings": [
+				{
+				"id": 1,
+				"value": 10,
+				"label": {
+					"en": "Siren alarm sequence interval",
+					"nl": "Sirene alarm opeenvolging interval"
+				},
+				"hint": {
+					"en": "The additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly off. This parameter defines the total length of the interval in seconds.",
+					"nl": "De extra sirene maakt een ander akoestisch signaal te onderscheiden van de rookmelder. Dit geluid is deels op en deels uit. Deze parameter definieert de totale lengte van het interval in seconden."
+					},
+				"type": "number"
+				},
+				{
+				"id": 2,
+				"value": 8,
+				"label": {
+					"en": "Siren alarm tone length",
+					"nl": "Sirene alarmtoon lengte"
+
+				},
+				"hint": {
+					"en": "The additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly off. This parameter defines the total length of the sound versus silence within this interval.",
+					"nl": "De extra sirene maakt een ander akoestisch signaal te onderscheiden van de rookmelder. Dit geluid is deels op en deels uit. Deze parameter definieert de totale lengte van het geluid versus stilte binnen dit interval."
+					},
+				"type": "number"
+				},
+				{
+				"id": 3,
+				"value": 99,
+				"label": {
+					"en": "Value of BASIC On-Command",
+					"nl": "Waarde van Basic On-Commando"
+					},
+				"hint": {
+					"en": "This defines what command is sent into association group 2",
+					"nl": "Dit definieerd welk commando wordt verzonden naar association group 2"
+					},
+				"type": "number"
+				},
+				{
+				"id": 4,
+				"value": 0,
+				"label": {
+					"en": "Value of BASIC Off-Command",
+					"nl": "Waarde van Basic Off-Commando"
+					},
+				"hint": {
+					"en": "This defines what command is sent into  association group 2",
+					"nl": "Dit definieerd welk commando wordt verzonden naar association group 2"
+					},
+				"type": "number"
+				}
+			]
+		},
+				{
+		"id": "009402",
+		"name": {
+			"en": "10 Year Smoke Detector and Siren",
+			"nl": "10 Year Smoke Detector and Siren"
+		},
+		"mobile": {
+			"components":[
+				{
+				"id": "icon",
+				"capabilities": ["onoff"]
+				},
+				{
+				"id": "toggle",
+				"capabilities": ["onoff"],
+				"options": { "showTitle": true }
+				},
+				{
+				"id": "battery",
+				"capabilities": ["measure_battery" ],
+				"options": { "showTitle": true }
+				},
+				{
+				"id": "sensor",
+				"capabilities": [ "alarm_smoke", "alarm_tamper", "alarm_battery" ]
+				}
+			]
+		},
+		"zwave": {
+			"manufacturerId": [340],
+			"productTypeId": [4],
+			"productId": [4],
+			"learnmode": {
+			"instruction": {
+				"en": "To include the device start the inclusion on your controller and then hit the little button on the wireless module for 1 second",
+				"nl": "Om het apparaat op te nemen start het inclusion proces op uw controller en druk dan de kleine knop op de draadloze module gedurende 1 seconde"
+				}
+			},
+			"associationGroups": [ 1, 2, 3 ],
+			"associationGroupsOptions": {
+				"1": {
+					"hint": {
+					"en": "Z-Wave Plus Lifeline",
+					"nl": "Z-Wave Plus Lifeline"
+						}
+					},
+				"2": {
+					"hint": {
+					"en": "Alarm Reports. All devices in this group will receive Alarm notifications (Smoke , Battery Low, Tamper)",
+					"nl": "Alarmrapporten. Alle apparaten in deze groep ontvangen alarmmeldingen (Rook, Lage Accu, Sabotage"
+						}
+					},
+				"3": {
+					"hint": {
+					"en": "Switching Command. All devices in this group will receive a BASIC SET command on Smoke Alarms. Configuration parameter 3 and 4 will define when ON and when OFF is sent.",
+					"nl": "Switching Command. Alle apparaten in deze groep krijgen een BASIC SET commando op smoke alarms. Configuratieparameters 3 en 4 zullen bepalen wanneer ON en wanneer OFF is verzonden."
+						}
+					}
+				}
+			},
+			"defaultConfiguration": [
+				{
+				"id": 1,
+				"size": 1,
+				"value": 10
+				},
+				{
+				"id": 2,
+				"size": 1,
+				"value": 8
+				},
+				{
+				"id": 3,
+				"size": 1,
+				"value": 99
+				},
+				{
+				"id": 3,
+				"size": 1,
+				"value": 0
+				}
+			],
+			"class": "other",
+			"capabilities": [ "onoff","alarm_smoke","alarm_tamper","measure_battery","alarm_battery" ],
+			"images": {
+				"large": "/drivers/009402/assets/images/large.jpg",
+				"small": "/drivers/009402/assets/images/small.jpg"
+				},
+			"settings": [
+				{
+				"id": 1,
+				"value": 10,
+				"label": {
+					"en": "Siren alarm sequence interval",
+					"nl": "Siren alarm sequence interval"
+				},
+				"hint": {
+					"en": "The additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly off. This parameter defines the total length of the interval in seconds.",
+					"nl": "De extra sirene zorgt voor een ander akoestisch signaal dat onderscheidt van het rookalarm. Dit geluid is gedeeltelijk aan en gedeeltelijk af. Deze parameter definieert de totale lengte van het interval in seconden."
+				},
+				"_size": 1,
+				"type": "number"
+				},
+				{
+				"id": 2,
+				"value": 8,
+				"label": {
+					"en": "Siren alarm tone length",
+					"nl": "Siren alarm toon lengte"
+				},
+				"hint": {
+					"en": "The additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly off. This parameter defines the total length of the sound versus silence within this interval. Please make sure this value is always smaller (shorter time) than parameter 1 that defines the whole sequence.",
+					"nl": "De extra sirene zorgt voor een ander akoestisch signaal dat onderscheidt van het rookalarm. Dit geluid is gedeeltelijk aan en gedeeltelijk af. Deze parameter bepaalt de totale lengte van het geluid versus stilte binnen dit interval. Zorg ervoor dat deze waarde altijd kleiner is (kortere tijd) dan parameter 1 die de hele volgorde definieert."
+				},
+				"_size": 1,
+				"type": "number"
+				},
+				{
+				"id": 3,
+				"value": true,
+				"label": {
+					"en": "Value of On-Command",
+					"nl": "Waarde van On-Commando"
+				},
+				"hint": {
+					"en": "This value is sent as BASIC Set to Association Group 3 when an Smoke Alarm occurs. If 255 can not be entered in your gateway use -1.",
+					"nl": "Deze waarde wordt verzonden als BASIC Set to Association Group 3 als er een rookmelder optreedt. Als 255 niet in uw gateway kan worden ingevoerd, gebruikt u -1."
+				},
+				"_size": 1,
+				"type": "checkbox"
+				},
+				{
+				"id": 4,
+				"value": true,
+				"label": {
+					"en": "Value of Off-Command",
+					"nl": "Waarde van Off-Commando"
+				},
+				"hint": {
+					"en": "This value is sent as BASIC Set to Association Group 3 when an Smoke Alarm is cleared. If 255 can not be entered in your gateway use -1.",
+					"nl": "Deze waarde wordt verzonden als BASIC Set to Association Group 3 als een rookmelder is gewist. Als 255 niet in uw gateway kan worden ingevoerd, gebruikt u -1."
+				},
+				"_size": 1,
+				"type": "checkbox"
+				}
+			]
+		},
+		{
+			"id": "010101",
+			"name": {
+				"en": "Wireless Thermo Valve",
+				"nl": "Draadloze Thermostaat Kraan"
+			},
+			"zwave": {
+				"manufacturerId": 2,
+				"productTypeId": 277,
+				"productId": 40976,
+				"wakeUpInterval": 1800,
+				"learnmode": {
+				"instruction": {
+						"en": "Press the middle button on your POPP Valve",
+						"nl": "Druk op de middelste knop van de POPP Thermostaatkraan"
+					}
+				},
+				"associationGroups": [ 1 ]
+			},
+			"class": "thermostat",
+			"capabilities": [
+				"target_temperature",
+				"measure_temperature",
+				"measure_battery",
+				"alarm_battery"
+			],
+			"capabilitiesOptions": {
+				"target_temperature": {
+					"min": 4,
+					"max": 28
+				}
+			},
+			"images": {
+				"large": "/drivers/010101/assets/images/large.jpg",
+				"small": "/drivers/010101/assets/images/small.jpg"
+			}
+		},
+		{
+            "id": "009006",
+            "name": {
+                "en": "Wall Plug Switch Indoor",
+                "nl": "Wall Plug Switch Indoor"
+            },
+            "zwave": {
+                "manufacturerId": 100,
+                "productTypeId": 12289,
+                "productId": 0,
+                "learnmode": {
+                    "image": "/drivers/009006/assets/learnmode.svg",
+                    "instruction": {
+                        "en": "Press button three times",
+                        "nl": "Druk driemaal op knop"
+                    }
+                },
+                "associationGroups": [1,1]
+            },
+            "class": "socket",
+			"capabilities": [ "onoff" ],
+            "images": {
+                "large": "/drivers/009006/assets/images/large.png",
+                "small": "/drivers/009006/assets/images/small.png"
+            },
+            "settings": [
+                {
+                    "id": "auto_switch_off",
+                    "type": "number",
+                    "attr": {
+                        "min": 0,
+                        "max": 65535
+                    },
+                    "value": 0,
+                    "label": {
+                        "en": "Auto switch off after (0 - 65535 sec)",
+                        "nl": "Automatisch uitschakelen na (0 - 65535 sec)"
+                    },
+                    "hint": {
+                        "en": "If not zero, automatically switch off after a user defined time in seconds.",
+                        "nl": "Indien niet nul, automatisch uitschakelen na de ingestelde tijd in seconden."
+                    }
+                },
+				{
+					"id": "led_indication_mode",
+					"type": "checkbox",
+					"label": {
+						"en": "LED Mode",
+						"nl": "LED Modus"
+					},
+					"value": true,
+					"hint": {
+						"en": "Led Switch Status indication. Default: enabled",
+						"nl": "Led Status Light indicatie. Standaard: ingeschakeld"
+					}
+				},
+				{
+					"id": "state_after_powerloss",
+					"type": "checkbox",
+					"label": {
+						"en": "Restore state after power loss",
+						"nl": "Herstel toestand bij spanningsuitval"
+					},
+					"value": true,
+					"hint": {
+						"en": "After power loss the relay will switch to last known state if enabled (checked) or remain off if disabled (unchecked).\nDefault: enabled = checked)",
+						"nl": "Schakel terug naar laatst bekende schakelstand na spanningsuitval wanneer ingeschakeld (checked) of uit wanneer niet ingeschakeld (unchecked).\nStandaard: uitgeschakeld = unchecked)"
+					}
+				},
+				{
+					"id": "led_off_color",
+					"type": "dropdown",
+					"label": {
+						"en": "Color of Led when turned off",
+						"nl": "Kleur Led wanneer uitgeschakeld"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Choose youre off color",
+						"nl": "Kies u kleur bij uitstand"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Off (default)",
+								"nl": "Uit (standaard)"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Red",
+								"nl": "Rood"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Green",
+								"nl": "Groen"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Blue",
+								"nl": "Blauw"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Yellow",
+								"nl": "Geel"
+							}
+						}
+					]
+				},
+				{
+					"id": "led_on_color",
+					"type": "dropdown",
+					"label": {
+						"en": "Color of Led when turned On",
+						"nl": "Kleur Led wanneer Ingeschakeld"
+					},
+					"value": "3",
+					"hint": {
+						"en": "Choose youre On color",
+						"nl": "Kies u kleur wanneer Ingeschakeld"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Off",
+								"nl": "Uit"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Red",
+								"nl": "Rood"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Green",
+								"nl": "Groen"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Blue (default)",
+								"nl": "Blauw (standaard)"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Yellow",
+								"nl": "Geel"
+							}
+						}
+					]
+				}
+			]
+        },
+		{
+            "id": "009105",
+            "name": {
+                "en": "Wall Plug Switch Outdoor",
+                "nl": "Wall Plug Switch Outdoor"
+            },
+            "zwave": {
+                "manufacturerId": [100 , 340],
+                "productTypeId": [ 0 , 3 ],
+                "productId": [ 0 , 1 ],
+                "learnmode": {
+                    "image": "/drivers/009105/assets/learnmode.svg",
+                    "instruction": {
+                        "en": "Press button three times",
+                        "nl": "Druk driemaal op knop"
+                    }
+                },
+                "associationGroups": [1,1]
+            },
+            "class": "socket",
+			"capabilities": [ "onoff" ],
+            "images": {
+                "large": "/drivers/009105/assets/images/large.png",
+                "small": "/drivers/009105/assets/images/small.png"
+            },
+            "settings": [
+                {
+                    "id": "auto_switch_off",
+                    "type": "number",
+                    "attr": {
+                        "min": 0,
+                        "max": 65535
+                    },
+                    "value": 0,
+                    "label": {
+                        "en": "Auto switch off after (1 - 65535 sec)",
+                        "nl": "Automatisch uitschakelen na (1 - 65535 sec)"
+                    },
+                    "hint": {
+                        "en": "If not zero, automatically switch off after a user defined time in seconds.",
+                        "nl": "Indien niet nul, automatisch uitschakelen na de ingestelde tijd in seconden."
+                    }
+                },
+				{
+					"id": "led_indication_mode",
+					"type": "checkbox",
+					"label": {
+						"en": "LED Mode",
+						"nl": "LED Modus"
+					},
+					"value": true,
+					"hint": {
+						"en": "Led Switch Status indication. Default: enabled",
+						"nl": "Led Status Light indicatie. Standaard: ingeschakeld"
+					}
+				},
+				{
+					"id": "state_after_powerloss",
+					"type": "checkbox",
+					"label": {
+						"en": "Restore state after power loss",
+						"nl": "Herstel toestand bij spanningsuitval"
+					},
+					"value": true,
+					"hint": {
+						"en": "After power loss the relay will switch to last known state if enabled (checked) or remain off if disabled (unchecked).\nDefault: enabled = checked)",
+						"nl": "Schakel terug naar laatst bekende schakelstand na spanningsuitval wanneer ingeschakeld (checked) of uit wanneer niet ingeschakeld (unchecked).\nStandaard: uitgeschakeld = unchecked)"
+					}
+				},
+				{
+					"id": "led_off_color",
+					"type": "dropdown",
+					"label": {
+						"en": "Color of Led when turned off",
+						"nl": "Kleur Led wanneer uitgeschakeld"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Choose youre off color",
+						"nl": "Kies u kleur bij uitstand"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Off (default)",
+								"nl": "Uit (standaard)"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Red",
+								"nl": "Rood"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Green",
+								"nl": "Groen"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Blue",
+								"nl": "Blauw"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Yellow",
+								"nl": "Geel"
+							}
+						}
+					]
+				},
+				{
+					"id": "led_on_color",
+					"type": "dropdown",
+					"label": {
+						"en": "Color of Led when turned On",
+						"nl": "Kleur Led wanneer Ingeschakeld"
+					},
+					"value": "3",
+					"hint": {
+						"en": "Choose youre On color",
+						"nl": "Kies u kleur wanneer Ingeschakeld"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Off",
+								"nl": "Uit"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Red",
+								"nl": "Rood"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Green",
+								"nl": "Groen"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Blue (default)",
+								"nl": "Blauw (standaard)"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Yellow",
+								"nl": "Geel"
+							}
+						}
+					]
+				}
+            ]
+        },
+		{
+			"id": "123610",
+			"name": { "en": "Switch 68G" },
+			"zwave": {
+				"manufacturerId": 340,
+				"productTypeId": 514,
+				"productId": 1297,
+				"learnmode": {
+					"image": "/drivers/123610/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the (action) button three times on the Smart Switch to enter learn mode",
+						"nl": "Druk drie keer op de (actie) knop op de Smart Switch om de leer modus te activeren"
+					}
+				},
+			"associationGroups": [ 1 ]
+			},
+			"class": "socket",
+			"capabilities": [ "onoff" ],
+			"images": {
+				"large": "/drivers/123610/assets/images/large.png",
+				"small": "/drivers/123610/assets/images/small.png"
+				},
+			"settings": [
+				{
+					"id": 1,
+					"type": "dropdown",
+					"label": {
+					"en": "Led mode",
+					"nl": "Led mode"
+					},
+					"value": "3",
+					"hint": {
+						"en": "Set LED indication mode",
+						"nl": "Configureer de LED indicatie mode"
+						},
+					"values": [
+					{
+						"id": "0",
+						"label": {
+							"en": "Disabled",
+							"nl": "Uitgeschakeld"
+							}
+					},
+					{
+						"id": "1",
+						"label": {
+							"en": "Show switch state",
+							"nl": "Toon de status (aan/uit)"
+							}
+					},
+					{
+						"id": "2",
+						"label": {
+							"en": "Night mode (inverted switch state)",
+							"nl": "Nacht modes (omgekeerde status)"
+							}
+					},
+					{
+						"id": "3",
+						"label": {
+							"en": "Operated by Indicator Command Class (Default)",
+							"nl": "Werking volgens de configuratie van de Command Class (Standaard)"
+							}
+					}
+					]
+				},
+				{
+					"id": 2,
+					"type": "number",
+					"label": {
+						"en": "Automatically switch off after",
+						"nl": "Automatisch uitschakelen na"
+						},
+					"value": 0,
+					"attr": {
+						"min": 0,
+						"max": 65535
+					},
+					"hint": {
+						"en": "If not zero, automatically switch off after a user defined time. Unit: Sec, Min: 0, Max: 65535, Default: 0",
+						"nl": "Als waarde niet 0 is dan uitschakelen na de opgegeven tijd. Eenheid sec., Min: 0, Max: 65535, Default: 0"
+					}
+				},
+				{
+					"id": 3,
+					"type": "dropdown",
+					"label": {
+						"en": "What to do on RF off com",
+						"nl": "Wat moet er gebeuren bij RF uit commando"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Defines how to interpret RF Off command. Can be used in conjunction with Auto Off function: Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics; Switch on - to switch on the light on both On and Off paddle press on the remote and switch it off after some amount of time. Button off click will still work (if button operations are not disabled).",
+						"nl": "Defineert hoe moet worden gereageerd op RF off commando. Kan samen met Auto Off functie worden gebruikt: Negeren - om lampen aan te zetten in geval van beweging om vervolgens uit te schakelen na een bepaalde periode. In geval van meerdere bewegings sensoren zullen ze afzonderlijk de lamp proberen uit te zetten. Dat kan soms niet handig zijn. Aan zetten - Om de dimmer aan te zetten met zowel aan- als uit opdracht van de afstandbediening om vervolgens na een bepaalde periode uit te gaan. De uitknop zal dan nog steeds werken (wanneer de knop opdracht niet zijn uitgeschakeld.)"
+					},
+					"values": [
+					{
+						"id": "0",
+						"label": {
+							"en": "Switch off (Default)",
+							"nl": "Uit zetten (Standaard)"
+							}
+					},
+					{
+						"id": "1",
+						"label": {
+							"en": "Ignore",
+							"nl": "Negeren"
+							}
+					},
+					{
+						"id": "2",
+						"label": {
+							"en": "Switch on",
+							"nl": "Aan zetten"
+							}
+					},
+					{
+						"id": "3",
+						"label": {
+							"en": "Switch on if load is off else switch off",
+							"nl": "Aan gaan wanneer er geen spanning is, ander uitschakelen"
+							}
+					}
+					]
+				},
+				{
+					"id": 5,
+					"type": "checkbox",
+					"label": {
+						"en": "Switch state after power cycle",
+						"nl": "Schakelaar status na power restore"
+					},
+					"value": true,
+					"hint": {
+						"en": "Defines if if the switch will go back to its previous state before loss of power",
+						"nl": "Defineert of de schakelaar terug gaat in zijn vorige status na spannings uitval/verlies."
+					}
+				}
+			]
+		},
+		{
+			"id": "123580",
+			"name": {
+			"en": "Dimmer 67G"
+			},
+			"zwave": {
+			"manufacturerId": 340,
+			"productTypeId": 4352,
+			"productId": 2,
+			"learnmode": {
+				"image": "/drivers/123580/assets/learnmode.svg",
+				"instruction": {
+				"en": "Press the (action) button 3 times on the Smart Dimmer to enter learn mode",
+				"nl": "Druk drie keer op de (actie) knop op de Smart Dimmer om de leer modus te activeren"
+				}
+			},
+			"associationGroups": [
+				1,
+				2
+			],
+			"defaultConfiguration": [
+				{
+				"id": 1,
+				"size": 1,
+				"value": 3
+				},
+				{
+				"id": 2,
+				"size": 2,
+				"value": 0
+				},
+				{
+				"id": 3,
+				"size": 1,
+				"value": 0
+				},
+				{
+				"id": 4,
+				"size": 1,
+				"value": 1
+				},
+				{
+				"id": 5,
+				"size": 1,
+				"value": 30
+				},
+				{
+				"id": 6,
+				"size": 1,
+				"value": 3
+				},
+				{
+				"id": 7,
+				"size": 1,
+				"value": 0
+				}
+			]
+			},
+			"class": "socket",
+			"capabilities": [
+			"onoff",
+			"dim"
+			],
+			"images": {
+			"large": "/drivers/123580/assets/images/large.png",
+			"small": "/drivers/123580/assets/images/small.png"
+			},
+			"settings": [
+			{
+				"id": 1,
+				"type": "dropdown",
+				"label": {
+				"en": "Led mode",
+				"nl": "Led mode"
+				},
+				"value": "3",
+				"hint": {
+				"en": "Set LED indication mode",
+				"nl": "Configureer de LED indicatie mode"
+				},
+				"values": [
+				{
+					"id": "0",
+					"label": {
+					"en": "Disabled",
+					"nl": "Uitgeschakeld"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+					"en": "Show switch state",
+					"nl": "Toon de status (aan/uit)"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+					"en": "Night mode (inverted switch state)",
+					"nl": "Nacht modes (omgekeerde status)"
+					}
+				},
+				{
+					"id": "3",
+					"label": {
+					"en": "Operated by Indicator Command Class (Default)",
+					"nl": "Werking volgens de configuratie van de Command Class (Standaard)"
+					}
+				}
+				]
+			},
+			{
+				"id": 2,
+				"type": "number",
+				"label": {
+				"en": "Automatically switch off after",
+				"nl": "Automatisch uitschakelen na"
+				},
+				"value": 0,
+				"attr": {
+				"min": 0,
+				"max": 65535
+				},
+				"hint": {
+				"en": "If not zero, automatically switch off after a user defined time. Unit: Sec, Min: 0, Max: 65535, Default: 0",
+				"nl": "Als waarde niet 0 is dan uitschakelen na de opgegeven tijd. Eenheid sec., Min: 0, Max: 65535, Default: 0"
+				}
+			},
+			{
+				"id": 3,
+				"type": "dropdown",
+				"label": {
+				"en": "What to do on RF off com",
+				"nl": "Wat moet er gebeuren bij RF uit commando"
+				},
+				"value": "0",
+				"hint": {
+				"en": "Defines how to interpret RF Off command. Can be used in conjunction with Auto Off function: Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics; Switch on - to switch on the light on both On and Off paddle press on the remote and switch it off after some amount of time. Button off click will still work (if button operations are not disabled).",
+				"nl": "Defineert hoe moet worden gereageerd op RF off commando. Kan samen met Auto Off functie worden gebruikt: Negeren - om lampen aan te zetten in geval van beweging om vervolgens uit te schakelen na een bepaalde periode. In geval van meerdere bewegings sensoren zullen ze afzonderlijk de lamp proberen uit te zetten. Dat kan soms niet handig zijn. Aan zetten - Om de dimmer aan te zetten met zowel aan- als uit opdracht van de afstandbediening om vervolgens na een bepaalde periode uit te gaan. De uitknop zal dan nog steeds werken (wanneer de knop opdracht niet zijn uitgeschakeld.)"
+				},
+				"values": [
+				{
+					"id": "0",
+					"label": {
+					"en": "Switch off (Default)",
+					"nl": "Uit zetten (Standaard)"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+					"en": "Ignore",
+					"nl": "Negeren"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+					"en": "Switch on",
+					"nl": "Aan zetten"
+					}
+				},
+				{
+					"id": "3",
+					"label": {
+					"en": "Switch on if load is off else switch off",
+					"nl": "Aan gaan wanneer er geen spanning is, ander uitschakelen"
+					}
+				}
+				]
+			},
+			{
+				"id": 4,
+				"type": "dropdown",
+				"label": {
+				"en": "Ignore start level",
+				"nl": "Negeer het start niveau"
+				},
+				"value": "1",
+				"hint": {
+				"en": "Defines if the dimmer shall ignore start level in Start Level Change command despite it is specified or not",
+				"nl": "Defineert of de dimmer het start niveau zal negeren bij het Level Change commando. Ondanks of het wel of niet is gespecifieerd."
+				},
+				"values": [
+				{
+					"id": "0",
+					"label": {
+					"en": "No",
+					"nl": "Nee"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+					"en": "Yes (Default)",
+					"nl": "Ja (Standaard)"
+					}
+				}
+				]
+			},
+			{
+				"id": 5,
+				"type": "number",
+				"label": {
+				"en": "Speed for fast dimming",
+				"nl": "Snelheid bij snel dimmen"
+				},
+				"value": 30,
+				"attr": {
+				"min": 0,
+				"max": 255
+				},
+				"hint": {
+				"en": "Time to dim on button presses and Set command (if it has no duration specified). If not 0, dimming will be done smoothly to preserve bulb life. 0=Instantly, 1-255 in 10ms units (Default 30)",
+				"nl": "Tijd voor het dimmen na het drukken van de knop en het Set commando (wanneer er geen periode is gedefineerd) Wanneer de waarde niet 0 is zal het dimmer geleidelijk worden gedaan om de lamp te sparen.  0=Direct, 1-255 in 10ms eenheden (Standaard 30)"
+				}
+			},
+			{
+				"id": 6,
+				"type": "number",
+				"label": {
+				"en": "Speed for slow dimming",
+				"nl": "Snelheid bij langzaam dimmen"
+				},
+				"value": 3,
+				"attr": {
+				"min": 0,
+				"max": 255
+				},
+				"hint": {
+				"en": "Time to dim on button holds and Start Level Change command (if it has no duration specified). Unit in Seconds 1-255 (Default 3)",
+				"nl": "Tijd om te dimmen na ingedrukte knop of Start Level commando (Wanneer er geen periode is gedefineerd) Eenheden in seconden 1-255 (Standaard 3)"
+				}
+			},
+			{
+				"id": 7,
+				"type": "dropdown",
+				"label": {
+				"en": "Behavior on 'Switch On",
+				"nl": "Gedrag bij aanschakelen"
+				},
+				"value": "0",
+				"hint": {
+				"en": "Defines the dim level on command 'ON'. On default he dimmer restores last dim level. This parameter allows configuring the maximum level on second On command (if already On) or to always switch on to maximum level.",
+				"nl": "Defineerd het dim niveau bij het AAN commando. Standaard zal de dimmer het laatste niveau gebruiken. Met deze instelling kan de maximale dim niveau voor het tweede AAN commando (wanneer de dimmer al aan staat) worden geconfigureerd of altijd aan gaan naar het maximale dim niveau. "
+				},
+				"values": [
+				{
+					"id": "0",
+					"label": {
+					"en": "last dim level (Default)",
+					"nl": "laatste dim niveau (Standaard)"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+					"en": "maximum dim level when already turned on",
+					"nl": "maximale dim niveau wanneer de dimmer al aan staat"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+					"en": "always maximum dim level",
+					"nl": "Altijd het maximale dim niveau"
+					}
+				}
+				]
+			}
+			]
+		},
+		{
+		"id": "005206",
+		"name": {
+			"en": "Z-Weather",
+			"nl": "Z-Weather"
+			},
+		"class" : "sensor",
+		"capabilities": [
+				"measure_wind_strength",
+				"measure_temperature",
+				"measure_humidity",
+				"measure_luminance",
+				"measure_pressure",
+				"measure_dewpoint",
+				"measure_battery",
+				"alarm_battery" ],
+		"images": {
+				"large": "/drivers/005206/assets/images/large.jpg",
+				"small": "/drivers/005206/assets/images/small.jpg"
+				},
+		"mobile": {
+            "components": [
+                {
+					"id": "icon"
+				},
+				{
+					"id": "battery",
+					"capabilities": ["measure_battery" ],
+					"options": { "showTitle": true }
+				},
+				{
+                    "id": "sensor",
+                    "capabilities": [ "measure_wind_strength", "measure_temperature", "measure_humidity", "measure_luminance", "measure_pressure", "measure_dewpoint", "alarm_battery"  ],
+                    "options": {
+    					"icons": {
+        					"measure_dewpoint": "/drivers/005206/assets/measure_dewpoint.svg"
+    							}
+                	}
+                }
+            ]
+        	},
+		"zwave": {
+		"manufacturerId": [ 340 , 277 ],
+		"productTypeId": [ 256 ],
+		"productId": [ 1024 ],
+		"learnmode": {
+		"instruction": {
+			"en": "Push the button 3 times within 1.5 seconds. If the LED is not blinking after releasing the button, Z-Weather has not enough energy and must be charged for several hours in bright sunlight.",
+			"nl": "Druk 2 keer op de knop 3 binnen 1,5 seconden. Als de LED niet knippert na het loslaten van de toets heeft Z-Weather niet genoeg energie en moet worden opgeladen voor enkele uren in fel zonlicht."
+			}
+		},
+		"associationGroups": [ 1, 2, 3, 4 ],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "Z-Wave Plus Lifeline"
+				}
+			},
+			"2": {
+				"hint": {
+					"en": "Too windy. If the threshold value for wind (Default value: 6m/s ) is exceeded, the basic set is sent to all group members. If the threshold value is exceeded for a long time, e.g. in case of storm for a couple of hours, the basic set value is sent repeatedly upon the scheduled wake up. Because in most cases the sun does not shine in case of storm, the repeated sending schedule may be between every one hour up to every five hours."
+				}
+			},
+			"3": {
+				"hint": {
+					"en": "It is getting bright. Sends BASIC SET command in the morning when brightness reached trigger level (Default value: 37%)"
+				}
+			},
+			"4": {
+				"hint": {
+					"en": "It is getting dark. Sends BASIC SET command in the evening when brightness reached trigger level (Default value: 37%)"
+				}
+			}
+			}
+		},
+		"settings": [
+			{
+			"id": "wind_threshold",
+			"value": 6,
+			"label": {
+				"en": "Threshold for too much wind"
+			},
+			"hint": {
+				"en": "Crossing this value on the rising edge, Z-Weather sends a Basic Set to the associated groups, serves the lifeline and sends a wake up notification."
+			},
+			"type": "number"
+			},
+			{
+			"id": "twilight_threshold",
+			"value": 37,
+			"label": {
+				"en": "Threshold for twilight"
+			},
+			"hint": {
+				"en": "Crossing this value from night to day, association group 3 is informed. Crossing this parameter from day to night, association group 4 is informed."
+			},
+			"type": "number"
+			}
+		]
+		},
+				{
+            "id": "009501",
+            "name": {
+                "en": "Secure Flow Stop – Valve Shut-Off",
+                "nl": "Secure Flow Stop – Valve Shut-Off"
+            },
+            "zwave": {
+                "manufacturerId": 340,
+                "productTypeId": 3,
+                "productId": 1298,
+                "learnmode": {
+                    "image": "/drivers/009501/assets/learnmode.svg",
+                    "instruction": {
+                        "en": "For inclusion and exclusion press the red button on the top of the enclosure 3 times",
+                        "nl": "Voor inlcusion of exclusion drukt u op de rode knop boven op de behuizing 3 keer"
+                    }
+                },
+                "associationGroups": [1,1]
+            },
+            "class": "socket",
+			"capabilities": [ "onoff" ],
+            "images": {
+                "large": "/drivers/009501/assets/images/large.jpg",
+                "small": "/drivers/009501/assets/images/small.jpg"
+            },
+            "settings": [
+				{
+					"id": "led_status",
+					"type": "checkbox",
+					"label": {
+						"en": "LED Mode",
+						"nl": "LED Modus"
+					},
+					"value": true,
+					"hint": {
+						"en": "Led always on or off. Default: enabled",
+						"nl": "Led altijd aan of uit. Standaard: ingeschakeld"
+					}
+				},
+				{
+					"id": "shutoff_behavior",
+					"type": "dropdown",
+					"label": {
+						"en": "Shut-off controller behavior",
+						"nl": "Shut-off controller gedrag"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Choose youre off color",
+						"nl": "Kies u kleur bij uitstand"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Remote and manually open/close(default)",
+								"nl": "Afstandsbediening en handmatig openen / sluiten(standaard)"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Remote open/close only",
+								"nl": "Afstandsbediening alleen open / sluiten"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Only remote open; only manually closing",
+								"nl": "Alleen afstandsbediening open; Alleen handmatig sluiten"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Only manually open; only remote closing",
+								"nl": "Alleen handmatig open; Alleen afstandsbediening sluiten"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Manually open/close only",
+								"nl": "Handmatig open / sluiten alleen"
+							}
+						}
+					]
+				}
+			]
+        },		
+		{
+		"id": "009204",
+		"name": {
+			"en": "KFOB-C Remote Control",
+			"nl": "KFOB-C Remote Control"
+		},
+		"zwave": {
+			"manufacturerId": 340,
+			"productTypeId": 256,
+			"productId": 259,
+			"wakeUpInterval": 1800,
+			"learnmode": {
+				"image": "/drivers/009204/assets/learnmode.svg",
+				"instruction": {
+					"en": "Activate inclusion on the device by pressing any one of the four buttons for one second",
+					"nl": "Om pairing te activeren, druk langer een seconde op een van de knoppen van de afstandsbediening."
+				}
+			},
+			"associationGroups": [
+				1,
+				2,
+				3,
+				4,
+				5
+			]
+		},
+		"class": "zwavecontroller",
+		"capabilities": [
+			"measure_battery"
+		],
+		"images": {
+			"large": "/drivers/009204/assets/images/large.png",
+			"small": "/drivers/009204/assets/images/small.png"
+		},
+		"settings": [{
+			"id": "button_1_and_3_pair_mode",
+			"type": "dropdown",
+			"label": {
+				"en": "Button 1 and 3 pair mode"
+			},
+			"value": "0",
+			"hint": {
+				"en": "The parameter determines the behaviour of buttons 1 and 3."
+			},
+			"values": [{
+				"id": "0",
+				"label": {
+					"en": "(0) Seperately, button 1 works with control group A, button 3 with control group C. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. "
+				}
+			}, {
+				"id": "1",
+				"label": {
+					"en": "(1) Pair without double clicks, button A/C are Up/Down. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group B and D"
+				}
+			}, {
+				"id": "2",
+				"label": {
+					"en": "(2) Pair with double clicks. button A/C are Up/Down. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group B,double click with group D"
+				}
+			}]
+		}, {
+			"id": "button_2_and_4_pair_mode",
+			"type": "dropdown",
+			"label": {
+				"en": "Button 2 and 4 pair mode"
+			},
+			"value": "0",
+			"hint": {
+				"en": "The parameter determines the behaviour of buttons 2 and 4."
+			},
+			"values": [{
+				"id": "0",
+				"label": {
+					"en": "(0) Seperately, button 2 works with control group B, button 4 with control group D. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. "
+				}
+			}, {
+				"id": "1",
+				"label": {
+					"en": "(1) Pair without double clicks, button B/D are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group B and D"
+				}
+			}, {
+				"id": "2",
+				"label": {
+					"en": "(2) Pair with double clicks. button B/D are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group B,double click with group D"
+				}
+			}]
+		}, {
+			"id": "command_to_control_group_a",
+			"type": "dropdown",
+			"label": {
+				"en": "Command to Control Group A"
+			},
+			"value": "8",
+			"hint": {
+				"en": "Defines the command to be sent to devices of control group A when the related button is pressed."
+			},
+			"values": [{
+				"id": "0",
+				"label": {
+					"en": "(0) Disabled"
+				}
+			}, {
+				"id": "1",
+				"label": {
+					"en": "(1) Switch On/Off and Dim (send Basic Set and Switch Multilevel)"
+				}
+			}, {
+				"id": "2",
+				"label": {
+					"en": "(3) Switch On/Off only (send Basic Set)"
+				}
+			}, {
+				"id": "3",
+				"label": {
+					"en": "(3) Switch All"
+				}
+			}, {
+				"id": "4",
+				"label": {
+					"en": "(4) Send Scenes"
+				}
+			}, {
+				"id": "5",
+				"label": {
+					"en": "(5) Send Preconfigured Scenes"
+				}
+			}, {
+				"id": "7",
+				"label": {
+					"en": "(7) Control DoorLock"
+				}
+			}, {
+				"id": "8",
+				"label": {
+					"en": "(8) Central Scene to Gateway (Default)"
+				}
+			}]
+		}, {
+			"id": "command_to_control_group_b",
+			"type": "dropdown",
+			"label": {
+				"en": "Command to Control Group B"
+			},
+			"value": "8",
+			"hint": {
+				"en": "Defines the command to be sent to devices of control group B when the related button is pressed."
+			},
+			"values": [{
+				"id": "0",
+				"label": {
+					"en": "(0) Disabled"
+				}
+			}, {
+				"id": "1",
+				"label": {
+					"en": "(1) Switch On/Off and Dim (send Basic Set and Switch Multilevel)"
+				}
+			}, {
+				"id": "2",
+				"label": {
+					"en": "(3) Switch On/Off only (send Basic Set)"
+				}
+			}, {
+				"id": "3",
+				"label": {
+					"en": "(3) Switch All"
+				}
+			}, {
+				"id": "4",
+				"label": {
+					"en": "(4) Send Scenes"
+				}
+			}, {
+				"id": "5",
+				"label": {
+					"en": "(5) Send Preconfigured Scenes"
+				}
+			}, {
+				"id": "7",
+				"label": {
+					"en": "(7) Control DoorLock"
+				}
+			}, {
+				"id": "8",
+				"label": {
+					"en": "(8) Central Scene to Gateway (Default)"
+				}
+			}]
+		}, {
+			"id": "command_to_control_group_c",
+			"type": "dropdown",
+			"label": {
+				"en": "Command to Control Group C"
+			},
+			"value": "8",
+			"hint": {
+				"en": "Defines the command to be sent to devices of control group C when the related button is pressed."
+			},
+			"values": [{
+				"id": "0",
+				"label": {
+					"en": "(0) Disabled"
+				}
+			}, {
+				"id": "1",
+				"label": {
+					"en": "(1) Switch On/Off and Dim (send Basic Set and Switch Multilevel)"
+				}
+			}, {
+				"id": "2",
+				"label": {
+					"en": "(3) Switch On/Off only (send Basic Set)"
+				}
+			}, {
+				"id": "3",
+				"label": {
+					"en": "(3) Switch All"
+				}
+			}, {
+				"id": "4",
+				"label": {
+					"en": "(4) Send Scenes"
+				}
+			}, {
+				"id": "5",
+				"label": {
+					"en": "(5) Send Preconfigured Scenes"
+				}
+			}, {
+				"id": "7",
+				"label": {
+					"en": "(7) Control DoorLock"
+				}
+			}, {
+				"id": "8",
+				"label": {
+					"en": "(8) Central Scene to Gateway (Default)"
+				}
+			}]
+		}, {
+			"id": "command_to_control_group_d",
+			"type": "dropdown",
+			"label": {
+				"en": "Command to Control Group D"
+			},
+			"value": "8",
+			"hint": {
+				"en": "Defines the command to be sent to devices of control group D when the related button is pressed."
+			},
+			"values": [{
+				"id": "0",
+				"label": {
+					"en": "(0) Disabled"
+				}
+			}, {
+				"id": "1",
+				"label": {
+					"en": "(1) Switch On/Off and Dim (send Basic Set and Switch Multilevel)"
+				}
+			}, {
+				"id": "2",
+				"label": {
+					"en": "(3) Switch On/Off only (send Basic Set)"
+				}
+			}, {
+				"id": "3",
+				"label": {
+					"en": "(3) Switch All"
+				}
+			}, {
+				"id": "4",
+				"label": {
+					"en": "(4) Send Scenes"
+				}
+			}, {
+				"id": "5",
+				"label": {
+					"en": "(5) Send Preconfigured Scenes"
+				}
+			}, {
+				"id": "7",
+				"label": {
+					"en": "(7) Control DoorLock"
+				}
+			}, {
+				"id": "8",
+				"label": {
+					"en": "(8) Central Scene to Gateway (Default)"
+				}
+			}]
+		}, {
+			"id": "send_the_following_switch_all_commands",
+			"type": "dropdown",
+			"label": {
+				"en": "Switch All commands"
+			},
+			"value": "1",
+			"hint": {
+				"en": "Send the following Switch All commands."
+			},
+			"values": [{
+				"id": "1",
+				"label": {
+					"en": "(1) Switch off only. (Default)"
+				}
+			}, {
+				"id": "2",
+				"label": {
+					"en": "(2) Switch on only."
+				}
+
+			}, {
+				"id": "255",
+				"label": {
+					"en": "(255) Switch all on and off"
+				}
+			}]
+		}, {
+			"id": "invert_buttons",
+			"type": "checkbox",
+			"label": {
+				"en": "Invert buttons"
+			},
+			"value": false,
+			"hint": {
+				"en": "Invert the behaviour of the buttons."
+			}
+
+		}, {
+			"id": "blocks_wakeup_even_when_wakeup_interval_is_set",
+			"type": "dropdown",
+			"label": {
+				"en": "Blocks wakeup even when wakeup interval is set."
+			},
+			"value": "1",
+			"hint": {
+				"en": "If device wakes up and no controller nearby, several unsuccessful attempts will drain battery."
+			},
+			"values": [{
+				"id": "0",
+				"label": {
+					"en": "(0) Wakeup is blocked"
+				}
+			}, {
+				"id": "1",
+				"label": {
+					"en": "(1) Wakeup is possible if configured accordingly. (Default)"
+				}
+			}]
+		}, {
+			"id": "send_unsolicited_battery_report_on_wake_up",
+			"type": "dropdown",
+			"label": {
+				"en": "Send unsolicited Battery Report on Wake Up "
+			},
+			"value": "1",
+			"values": [{
+				"id": "0",
+				"label": {
+					"en": "(0) No."
+				}
+			}, {
+				"id": "1",
+				"label": {
+					"en": "(1) To same node as wake up notification. (Default)"
+				}
+			}, {
+				"id": "2",
+				"label": {
+					"en": "(2) Broadcast to neighbours."
+				}
+			}]
+		}]
+		},
+		{
+			"id": "012501",
+			"name": {
+				"en": "Strike Lock Control"
+			},
+			"images": {
+				"large": "/drivers/012501/assets/images/large.jpg",
+				"small": "/drivers/012501/assets/images/small.jpg"
+			},
+			"class": "lock",
+			"capabilities": [
+				"locked",
+				"measure_battery",
+				"alarm_battery"
+			],
+			"zwave": {
+				"manufacturerId": 340,
+				"productTypeId": 5,
+				"productId": 1,
+				"requireSecure": true,
+				"learnmode": {
+					"image": "/drivers/012501/assets/learnmode.svg",
+					"instruction": {
+						"en": "Push the z-wave button on your Strike Lock Board once.",
+						"nl": "Druk 1 keer op de z-wave knop op de Strike Lock print."
+					}
+				},
+				"associationGroups": [ 1 , 2]
+			},
+			"settings": [
+				{
+					"id": "ffm",
+					"type": "dropdown",
+					"label": {
+						"en": "Force FliRS Mode",
+						"nl": "Force FliRS Modus"
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Depends on Power Status in Inclusion Moment",
+								"nl": "Afhankelijk van Power Status op moment van Inclusion"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Force FLiRS Mode",
+								"nl": "Force FLiRS Modus"
+							}
+						}
+						]
+				}
+			]
+		},
+		{
+			"id": "Z700168",
+			"name": {
+				"en": "Z-Rain - Rain Sensor",
+				"nl": "Z-Rain - Regen Sensor"
+			},
+			"capabilities": [
+				"meter_rain",
+				"measure_rain",
+				"measure_battery",
+				"alarm_battery",
+				"alarm_rain"
+			],
+			"mobile": {
+				"components":[
+					{
+					  "id": "icon"
+					},
+					{
+						"id": "battery",
+						"capabilities": ["measure_battery" ],
+						"options": { "showTitle": true }
+					},
+					{
+						"id": "sensor",
+						"capabilities": ["meter_rain","measure_rain","alarm_battery"]
+					}
+				]
+			},
+				"zwave": {
+					"manufacturerId": 340,
+					"productTypeId": 4,
+					"productId": 17,
+					"learnmode": {
+						"instruction": {
+							"en": "1. Open the base and the electronics block. Ensure charged batteries are placed. Use a pin to push the Z-Wave button 1 time. If this doesn't work you can try with pushing 3 times.",
+							"nl": "1. Open de behuizing en het electonica blok. Zorg dat er opgeladen batterijen aanwezig zijn. Gebruik een pinnetje om de Z-Wave knop 1 keer in te drukken. Als dit niet werkt kan het helpen om 3 keer snel te drukken."
+						}
+				},
+					"associationGroups": [ 1,2,3 ],
+					"associationGroupsOptions": {
+				    "1": {
+					    "hint": {
+						"en": "Z-Wave Plus Lifeline"
+					    }
+				    },
+				    "2": {
+					    "hint": {
+						    "en": "Switching Command when Rain (> 0 mm/h). Basic Set Command is sent."
+					    }
+				    },
+				    "3": {
+					   "hint": {
+						   "en": "Heavy Rain detected. Basic Set Command is sent."
+					   	   }
+					   }
+				   },
+				   "defaultConfiguration": [
+					{
+						"id": 2,
+						"size": 1,
+						"value": 99
+					},
+					{
+						"id": 3,
+						"size": 1,
+						"value": 0
+					},
+					{
+						"id": 6,
+						"size": 1,
+						"value": 98
+					},
+					{
+						"id": 7,
+						"size": 1,
+						"value": 1
+					}]
+				},
+				"class": "sensor",
+				"images": {
+					"large": "/drivers/Z700168/assets/images/large.jpg",
+					"small": "/drivers/Z700168/assets/images/small.jpg"
+				},
+				"settings": [
+					{
+						"id": "rain_counter",
+						"value": 0,
+						"type": "number",
+						"label": {
+							"en": "Total rain counter",
+							"nl": "Totale regen teller"
+							},
+						"hint": {
+							"en": "This values shows the total count of rain from the moment of inclusion in mm water level. By writing this value this counter can be reset. (0-32000)",
+							"nl": "Deze waarde geeft de totale hoeveelheid regen vanaf het toevoegen aan de controler in mm weer. Door het instellen van deze waarde kan de teller gereset worden (0-32000)"
+							},
+						"attr": {
+							"min": 0,
+							"max": 32000
+							}
+					},
+					{
+						"id": "rain_start_command",
+						"value": 99,
+						"label": {
+							"en": "Rain start command",
+							"nl": "Regen start commando"
+						},
+						"hint": {
+							"en": "This BASIC Set Command value is sent out into Association Group 2 when the device detects start of rain",
+							"nl": "Dit BASIC Set commando wordt naar association group 2 gestuurd als er regen wordt waargenomen."
+						},
+						"type": "number",
+						"attr": {
+							"min": 0,
+							"max": 99
+							}
+					},
+					{
+						"id": "rain_stop_command",
+						"value": 0,
+						"label": {
+							"en": "Rain stop command",
+							"nl": "Regen stop commando"
+						},
+						"hint": {
+							"en": "This BASIC Set Command value is sent out into Association Group 2 when the device detects stop of rain",
+							"nl": "Dit BASIC Set commando wordt naar association group 2 gestuurd als er geen regen meer wordt waargenomen."
+						},
+						"type": "number",
+						"attr": {
+							"min": 0,
+							"max": 99
+							}
+					},
+					{
+						"id": "heavy_rain",
+						"value": 255,
+						"type": "number",
+						"label": {
+							"en": "Heavy rain definition.",
+							"nl": "Zware regen definitie."
+							},
+						"hint": {
+                            "en": "This threshold defines when a heavy rain condition is hit in mm/hour. In most countries this is defined as > 15 mm rain per hour. The default value however is to turn this function off.",
+							"nl": "Stelt in wat als zware regen wordt gezien in mm/uur. In de meeste landen is dit > 15 mm regen per uur. Standaard staat deze functie uit."
+							},
+						"attr": {
+							"min": 0,
+							"max": 255
+							}
+					},
+					{
+						"id": "heavy_rain_start_command",
+						"value": 98,
+						"label": {
+							"en": "Heavy rain start command",
+							"nl": "Zware regen start commando"
+						},
+						"hint": {
+							"en": "This BASIC Set Command value is sent out into Association Group 3 when the device detects start of heavy rain",
+							"nl": "Dit BASIC Set commando wordt naar association group 3 gestuurd als er zware regen wordt waargenomen."
+						},
+						"type": "number",
+						"attr": {
+							"min": 0,
+							"max": 99
+							}
+					},
+					{
+						"id": "heavy_rain_stop_command",
+						"value": 1,
+						"label": {
+							"en": "Heavy rain stop command",
+							"nl": "Zware regen stop commando"
+						},
+						"hint": {
+							"en": "This BASIC Set Command value is sent out into Association Group 3 when the device detects stop of heavy rain",
+							"nl": "Dit BASIC Set commando wordt naar association group 3 gestuurd als er geen zware regen meer wordt waargenomen."
+						},
+						"type": "number",
+						"attr": {
+							"min": 0,
+							"max": 99
+							}
+					}
+			]
+		}
+		],
+		"flow" : {
+		"actions": [
+			{
+				"id": "sound_alarm",
+				"title": {
+					"en": "Sound alarm",
+					"nl": "Alarm luiden"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=005107"
+					}
+				]
+			},
+			{
+				"id": "silence_alarm",
+				"title": {
+					"en": "Silence alarm",
+					"nl": "Alarm stil"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=005107"
+					}
+				]
+			},
+			{
+				"id": "sound_alarm",
+				"title": {
+					"en": "Sound alarm",
+					"nl": "Alarm luiden"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=004001"
+					}
+				]
+			},
+			{
+				"id": "silence_alarm",
+				"title": {
+					"en": "Silence alarm",
+					"nl": "Alarm stil"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=004001"
+					}
+				]
+			},
+			{
+				"id": "sound_alarm",
+				"title": {
+					"en": "Sound alarm",
+					"nl": "Alarm luiden"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=009402"
+					}
+				]
+			},
+			{
+				"id": "silence_alarm",
+				"title": {
+					"en": "Silence alarm",
+					"nl": "Alarm stil"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=009402"
+					}
+				]
+			}
+		],
+		"triggers": [
+			{
+				"id": "battery_alarm",
+				"title": {
+					"en": "The battery alarm turned on",
+					"nl": "De batterijwaarschuwing gaat aan"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=010101"
+					}
+				]
+			},
+			{
+				"id": "alarm_tamper",
+				"title": {
+					"en": "Tamper Alarm Trigger",
+					"nl": "Sabotage Alarm gaat af"
+				},
+				"args": [
+					{
+					"name": "device",
+					"type": "device",
+					"filter": "driver_id=005107"
+					}
+				],
+				"tokens": [
+					{
+					"name": "Tamper",
+					"title": {
+					"en": "Tamper",
+					"nl": "Sabotage"
+					},
+					"example": {
+						"en": "0/1"
+						}
+					}
+				]
+			},
+			{
+				"id": "measure_temperature_changed",
+				"title": {
+					"en": "The temperature changed",
+					"nl": "De temperatuur is veranderd"
+					},
+				"tokens": [
+				{
+					"name": "measure_temperature",
+					"title": {
+					"en": "Temperature",
+					"nl": "Temperatuur"
+					},
+					"example": {
+					"en": "23.5"
+					}
+				}
+				],
+				"args": [
+					{
+					"name": "device",
+					"type": "device",
+					"filter": "driver_id=005107"
+					}
+				]
+			},
+			{
+				"id": "battery_alarm",
+				"title": {
+					"en": "The battery alarm turned on",
+					"nl": "De batterijwaarschuwing gaat aan"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=005107"
+					}
+				]
+			},
+			{
+				"id": "alarm_smoke",
+				"title": {
+					"en": "Smoke Alarm Trigger",
+					"nl": "Rook Alarm gaat af"
+				},
+				"args": [
+					{
+					"name": "device",
+					"type": "device",
+					"filter": "driver_id=004001"
+					}
+				],
+				"tokens": [
+					{
+					"name": "Smoke",
+					"title": {
+					"en": "Smoke",
+					"nl": "Rook"
+					},
+					"example": {
+						"en": "0/1"
+						}
+					}
+				]
+			},
+			{
+				"id": "alarm_tamper",
+				"title": {
+					"en": "Tamper Alarm Trigger",
+					"nl": "Sabotage Alarm gaat af"
+				},
+				"args": [
+					{
+					"name": "device",
+					"type": "device",
+					"filter": "driver_id=004001"
+					}
+				],
+				"tokens": [
+					{
+					"name": "Tamper",
+					"title": {
+					"en": "Tamper",
+					"nl": "Sabotage"
+					},
+					"example": {
+						"en": "0/1"
+						}
+					}
+				]
+			},
+			{
+				"id": "battery_alarm",
+				"title": {
+					"en": "The battery alarm turned on",
+					"nl": "De batterijwaarschuwing gaat aan"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=004001"
+					}
+				]
+			},
+			{
+				"id": "alarm_smoke",
+				"title": {
+					"en": "Smoke Alarm Trigger",
+					"nl": "Rook Alarm gaat af"
+				},
+				"args": [
+					{
+					"name": "device",
+					"type": "device",
+					"filter": "driver_id=009402"
+					}
+				],
+				"tokens": [
+					{
+					"name": "Smoke",
+					"title": {
+					"en": "Smoke",
+					"nl": "Rook"
+					},
+					"example": {
+						"en": "0/1"
+						}
+					}
+				]
+			},
+			{
+				"id": "alarm_tamper",
+				"title": {
+					"en": "Tamper Alarm Trigger",
+					"nl": "Sabotage Alarm gaat af"
+				},
+				"args": [
+					{
+					"name": "device",
+					"type": "device",
+					"filter": "driver_id=009402"
+					}
+				],
+				"tokens": [
+					{
+					"name": "Tamper",
+					"title": {
+					"en": "Tamper",
+					"nl": "Sabotage"
+					},
+					"example": {
+						"en": "0/1"
+						}
+					}
+				]
+			},
+			{
+				"id": "battery_alarm",
+				"title": {
+					"en": "The battery alarm turned on",
+					"nl": "De batterijwaarschuwing gaat aan"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=009402"
+					}
+				]
+			},
+			{
+			"id": "009204_btn1_single",
+			"title": {
+				"en": "Button 1 single press",
+				"nl": "Een maal gedrukt op knop 1"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=009204"
+			}]
+			}, {
+			"id": "009204_btn1_double",
+			"title": {
+				"en": "Button 1 double press",
+				"nl": "Twee maal gedrukt op knop 1"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=009204"
+			}]
+			}, {
+			"id": "009204_btn2_single",
+			"title": {
+				"en": "Button 2 single press",
+				"nl": "Een maal gedrukt op knop 2"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=009204"
+			}]
+			}, {
+			"id": "009204_btn2_double",
+			"title": {
+				"en": "Button 2 double press",
+				"nl": "Twee maal gedrukt op knop 2"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=009204"
+			}]
+			}, {
+			"id": "009204_btn3_single",
+			"title": {
+				"en": "Button 3 single press",
+				"nl": "Een maal gedrukt op knop 3"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=009204"
+			}]
+			}, {
+			"id": "009204_btn3_double",
+			"title": {
+				"en": "Button 3 double press",
+				"nl": "Twee maal gedrukt op knop 3"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=009204"
+			}]
+			}, {
+			"id": "009204_btn4_single",
+			"title": {
+				"en": "Button 4 single press",
+				"nl": "Een maal gedrukt op knop 4"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=009204"
+			}]
+			}, {
+			"id": "009204_btn4_double",
+			"title": {
+				"en": "Button 4 double press",
+				"nl": "Twee maal gedrukt op knop 4"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=009204"
+			}]
+			}, 
+			{
+			"id": "009204_battery_alarm",
+			"title": {
+				"en": "The battery alarm turned on",
+				"nl": "De batterijwaarschuwing gaat aan"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=009204"
+			}]
+		},
+		{
+			"id": "700168_rain_stop",
+			"title": {
+				"en": "It has stopped raining",
+				"nl": "Het is gestopt met regenen"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=Z700168"
+			}]
+		},
+		{
+			"id": "700168_rain_start",
+			"title": {
+				"en": "It has started raining",
+				"nl": "Het is gestart met regenen"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=Z700168"
+			}]
+		},
+		{
+			"id": "700168_heavy_rain_stop",
+			"title": {
+				"en": "It has stopped heavy raining",
+				"nl": "Het is gestopt met zwaar regenen"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=Z700168"
+			}]
+		},
+		{
+			"id": "700168_heavy_rain_start",
+			"title": {
+				"en": "It has started heavy raining",
+				"nl": "Het is gestart met zwaar regenen"
+			},
+			"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=Z700168"
+			}]
+		}
+		]
+	}
+}

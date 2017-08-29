@@ -1,0 +1,108 @@
+{
+	"id": "005206",
+	"name": {
+		"en": "Z-Weather",
+		"nl": "Z-Weather"
+		},
+	"class" : "sensor",
+	"capabilities": [
+			"measure_wind_strength",
+			"measure_temperature",
+			"measure_humidity",
+			"measure_luminance",
+			"measure_pressure",
+			"measure_dewpoint",
+			"measure_battery",
+			"alarm_battery" ],
+	"images": {
+			"large": "/drivers/005206/assets/images/large.jpg",
+			"small": "/drivers/005206/assets/images/small.jpg"
+			},
+	"mobile": {
+           "components": [
+               {
+				"id": "icon"
+			},
+			{
+				"id": "battery",
+				"capabilities": ["measure_battery" ],
+				"options": { "showTitle": true }
+			},
+			{
+                   "id": "sensor",
+                   "capabilities": [ "measure_wind_strength", "measure_temperature", "measure_humidity", "measure_luminance", "measure_pressure", "measure_dewpoint", "alarm_battery"  ],
+                   "options": {
+   					"icons": {
+       					"measure_dewpoint": "/drivers/005206/assets/measure_dewpoint.svg"
+   							}
+               	}
+               }
+           ]
+       	},
+	"zwave": {
+	"manufacturerId": [ 340 , 277 ],
+	"productTypeId": [ 256 ],
+	"productId": [ 1024 ],
+	"learnmode": {
+	"instruction": {
+		"en": "Push the button 3 times within 1.5 seconds. If the LED is not blinking after releasing the button, Z-Weather has not enough energy and must be charged for several hours in bright sunlight.",
+		"nl": "Druk 2 keer op de knop 3 binnen 1,5 seconden. Als de LED niet knippert na het loslaten van de toets heeft Z-Weather niet genoeg energie en moet worden opgeladen voor enkele uren in fel zonlicht."
+		}
+	},
+	"associationGroups": [ 1, 2, 3, 4 ],
+	"associationGroupsOptions": {
+		"1": {
+			"hint": {
+				"en": "Z-Wave Plus Lifeline"
+			}
+		},
+		"2": {
+			"hint": {
+				"en": "Too windy. If the threshold value for wind (Default value: 6m/s ) is exceeded, the basic set is sent to all group members. If the threshold value is exceeded for a long time, e.g. in case of storm for a couple of hours, the basic set value is sent repeatedly upon the scheduled wake up. Because in most cases the sun does not shine in case of storm, the repeated sending schedule may be between every one hour up to every five hours."
+			}
+		},
+		"3": {
+			"hint": {
+				"en": "It is getting bright. Sends BASIC SET command in the morning when brightness reached trigger level (Default value: 37%)"
+			}
+		},
+		"4": {
+			"hint": {
+				"en": "It is getting dark. Sends BASIC SET command in the evening when brightness reached trigger level (Default value: 37%)"
+			}
+		}
+		}
+	},
+	"settings": [
+		{
+		"id": "wind_threshold",
+		"zwave": {
+			"index": 1,
+			"size": 1
+		},
+		"value": 6,
+		"label": {
+			"en": "Threshold for too much wind"
+		},
+		"hint": {
+			"en": "Crossing this value on the rising edge, Z-Weather sends a Basic Set to the associated groups, serves the lifeline and sends a wake up notification."
+		},
+		"type": "number"
+		},
+		{
+		"id": "twilight_threshold",
+		"zwave": {
+			"index": 2,
+			"size": 1
+		},
+		"value": 37,
+		"label": {
+			"en": "Threshold for twilight"
+		},
+		"hint": {
+			"en": "Crossing this value from night to day, association group 3 is informed. Crossing this parameter from day to night, association group 4 is informed."
+		},
+		"type": "number"
+		}
+	]
+}

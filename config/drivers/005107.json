@@ -1,0 +1,235 @@
+{
+	"id": "005107",
+	"mobile": {
+		"components":[
+			{
+			"id": "icon",
+			"capabilities": ["onoff"]
+			},
+			{
+			"id": "toggle",
+			"capabilities": ["onoff"],
+			"options": { "showTitle": true }
+			},
+			{
+			"id": "battery",
+			"capabilities": ["measure_battery" ],
+			"options": { "showTitle": true }
+			},
+			{
+			"id": "sensor",
+			"capabilities": [
+				"measure_temperature",
+				"alarm_tamper",
+				"alarm_battery"
+				]
+			}
+		]
+	},
+	"name": {
+			"en": "Solar Outdoor Siren",
+			"nl": "Solar Buiten Sirene"
+		},
+		"zwave": {
+			"manufacturerId": 340,
+			"productTypeId": 4,
+			"productId": 2,
+			"learnmode": {
+				"image": "/drivers/005107/assets/wakeup.svg",
+				"instruction": {
+					"en": "1. Open the case and turn on the power switch 2. Remove the metal mounting plate from the device. 3. Turn your controller into inclusion mode with a short single click on the internal inclusion button.",
+					"nl": "1. Open de behuizing en zet de sirenen aan met de schakelaar 2. Verwijder de metalen montageplaat van het apparaat. 3. Zet uw controller in inclusion mode en geef een korte enkele klik op de interne knop bij de schakelaar voor inclusion."
+				}
+		},
+			"associationGroups": [ 1 ],
+			"defaultConfiguration": [
+			{
+				"id": 1,
+				"size": 1,
+				"value": 1
+			},
+			{
+				"id": 5,
+				"size": 1,
+				"value": 1
+			},
+			{
+				"id": 6,
+				"size": 1,
+				"value": 0
+			}
+		]
+		},
+		"class": "other",
+		"capabilities": [ "onoff","alarm_tamper","measure_battery","measure_temperature","alarm_battery" ],
+		"images": {
+			"large": "/drivers/005107/assets/images/large.jpg",
+			"small": "/drivers/005107/assets/images/small.jpg"
+		},
+		"settings": [
+			{
+				"id": "siren_trigger_mode",
+				"zwave": {
+					"index": 1,
+					"size": 1
+				},
+				"type": "dropdown",
+				"values": [
+					{
+					"id": "0",
+						"label": {
+						"en": "Siren triggers when removed from holster. Must be turned off",
+						"nl": "Sirene gaat af zodra deze uit holster wordt genomen. Moet handmatig worden uitgezet"
+						}
+					},
+					{
+						"id": "1",
+						"label": {
+						"en": "Siren triggers when removed from holster. Turns off when placed back (standard)",
+						"nl": "Sirene gaat af zodra deze uit holster wordt genomen. Gaat uit bij terugplaatsing (standaard)"
+						}
+					},
+					{
+						"id": "2",
+						"label": {
+						"en": "Siren does not triggers when removed from holster. (Service Mode)",
+						"nl": "Sirene gaat niet af wanneer uit holster genomen. (Service Mode)"
+						}
+					}
+				],
+				"value": "1",
+				"label": {
+					"en": "Sabotage alarm setting",
+					"nl": "Sabotage alarm setting"
+					},
+				"hint": {
+				"en": "Change the way how the siren reacts when pulled of the wall",
+				"nl": "Aanpassen hoe de sirene reageerd als hij uit zijn holster wordt gehaald"
+				 }
+			 },
+			{
+				"id": "siren_alarm_mode",
+				"zwave": {
+					"index": 5,
+					"size": 1
+				},
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "0",
+						"label": {
+						"en": "When Alarm only make sound",
+						"nl": "Bij Alarm alleen geluid"
+						}
+					},
+					{
+						"id": "1",
+						"label": {
+						"en": "When Alarm only blink lights (standard)",
+						"nl": "Bij Alarm alleen licht signalering (stanaard)"
+						}
+					},
+					{
+						"id": "2",
+						"label": {
+						"en": "When Alarm make sound an light",
+						"nl": "Bij Alarm zowel geluid als licht signalering"
+						}
+					}
+				],
+				"label": {
+				"en": "Alarm mode",
+				"nl": "Alarm mode"
+						},
+				"value": "1",
+				"hint": {
+				"en": "Change the way the alarm will go off",
+				"nl": "Pas aan hoe het alarm af gaat"
+					}
+			},
+			{
+				"id": "siren_auto_off",
+				"zwave": {
+					"index": 6,
+					"size": 1
+				},
+				"type": "number",
+				"attr": {
+					"min": 0,
+					"max": 30
+				},
+				"value": 0,
+				"label": {
+					"en": "Siren Auto Turnoff time",
+					"nl": "Automatische uitschakel tijd van sirene"
+				},
+				"hint": {
+					"en": "The amount of time before siren auto stops in minutes. (default: 0-UIT, range: 1 - 30)",
+					"nl": "De tijd dat de sirene afgaat in minuten voordat hij vanzelf uitgaat. (default: 0-UIT, range: 1 - 30)"
+				}
+			},
+			{
+			"id": "siren_temp_correction",
+			"zwave": {
+					"index": 2,
+					"size": 1
+				},
+			"value": 0,
+			"type": "number",
+				"label": {
+					"en": "Temperature Adjustment",
+					"nl": "Temperatuur Correctie"
+					},
+			"hint": {
+				"en": "Temperature correction. The given value changes the displayed temperature by 0.1C (-127 to 127)",
+				"nl": "Temperatuur correctie. De gegeven waarde verandert de weergegeven temperatuur met 0.1C (-127 tot 127)"
+				},
+			"attr": {
+				"min": 0,
+				"max": 255
+				}
+			},
+			{
+			"id": "siren_report_unsolicited",
+			"zwave": {
+					"index": 3,
+					"size": 1
+			},
+			"value": 10,
+			"label": {
+				"en": "Send unsolicited Temperature Report",
+				"nl": "Het sturen van ongevraagde Temperatuur Report"
+			},
+			"hint": {
+				"en": "Temperature Threshold to send unsolicited Temperature Update. 10= 1 Celcius",
+				"nl": "Temperature Threshold om ongevraagde temperatuur update te sturen. 10 = 1 Celsius"
+			},
+			"type": "number",
+			"attr": {
+				"min": 0,
+				"max": 255
+				}
+			},
+			{
+			"id": "siren_unsolicited_time",
+			"zwave": {
+					"index": 4,
+					"size": 2
+				},
+			"value": 15,
+			"label": {
+				"en": "Send unsolicited Temperature Report periodically after (N) wake up",
+				"nl": "Het sturen van ongevraagde Temperatuur Rapport periodiek na (N) wakker worden"
+			},
+			"hint": {
+				"en": "If the value is set, after N wake up number (measurement is every 4 minutes) the temperature report will be sent. By default it is 15 = every 1 hour",
+				"nl": "Als de waarde is ingesteld, nadat N wake up nummer (meting elke 4 minuten) wordt het temperatuur rapport verzonden. Standaard is 15 = elk 1 uur"
+			},
+			"type": "number",
+			"attr": {
+				"min": 0,
+				"max": 65535
+			}
+		}
+	]
+}

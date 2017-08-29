@@ -1,0 +1,134 @@
+[debug] ------------------------------------------
+[debug] Node: b18dec30-7243-40b4-ba86-54543a099ee1
+[debug] - Battery: true
+[debug] - CommandClass: COMMAND_CLASS_ZWAVEPLUS_INFO
+[debug] -- Version: 2
+[debug] -- Commands:
+[debug] --- ZWAVEPLUS_INFO_GET
+[debug] --- ZWAVEPLUS_INFO_REPORT
+[debug] - CommandClass: COMMAND_CLASS_BASIC
+[debug] -- Version: 1
+[debug] -- Commands:
+[debug] --- BASIC_GET
+[debug] --- BASIC_REPORT
+[debug] --- BASIC_SET
+[debug] - CommandClass: COMMAND_CLASS_SWITCH_BINARY
+[debug] -- Version: 1
+[debug] -- Commands:
+[debug] --- SWITCH_BINARY_GET
+[debug] --- SWITCH_BINARY_REPORT
+[debug] --- SWITCH_BINARY_SET
+[debug] - CommandClass: COMMAND_CLASS_SENSOR_BINARY
+[debug] -- Version: 2
+[debug] -- Commands:
+[debug] --- SENSOR_BINARY_GET
+[debug] --- SENSOR_BINARY_REPORT
+[debug] --- SENSOR_BINARY_SUPPORTED_GET_SENSOR
+[debug] --- SENSOR_BINARY_SUPPORTED_SENSOR_REPORT
+[debug] - CommandClass: COMMAND_CLASS_NOTIFICATION
+[debug] -- Version: 5
+[debug] -- Commands:
+[debug] --- NOTIFICATION_GET
+[debug] --- NOTIFICATION_REPORT
+[debug] --- NOTIFICATION_SET
+[debug] --- NOTIFICATION_SUPPORTED_GET
+[debug] --- NOTIFICATION_SUPPORTED_REPORT
+[debug] --- EVENT_SUPPORTED_GET
+[debug] --- EVENT_SUPPORTED_REPORT
+[debug] - CommandClass: COMMAND_CLASS_SENSOR_MULTILEVEL
+[debug] -- Version: 5
+[debug] -- Commands:
+[debug] --- SENSOR_MULTILEVEL_GET
+[debug] --- SENSOR_MULTILEVEL_REPORT
+[debug] --- SENSOR_MULTILEVEL_SUPPORTED_GET_SENSOR
+[debug] --- SENSOR_MULTILEVEL_SUPPORTED_SENSOR_REPORT
+[debug] --- SENSOR_MULTILEVEL_SUPPORTED_GET_SCALE
+[debug] --- SENSOR_MULTILEVEL_SUPPORTED_SCALE_REPORT
+[debug] - CommandClass: COMMAND_CLASS_CONFIGURATION
+[debug] -- Version: 1
+[debug] -- Commands:
+[debug] --- CONFIGURATION_GET
+[debug] --- CONFIGURATION_REPORT
+[debug] --- CONFIGURATION_SET
+[debug] - CommandClass: COMMAND_CLASS_ASSOCIATION
+[debug] -- Version: 2
+[debug] -- Commands:
+[debug] --- ASSOCIATION_GET
+[debug] --- ASSOCIATION_GROUPINGS_GET
+[debug] --- ASSOCIATION_GROUPINGS_REPORT
+[debug] --- ASSOCIATION_REMOVE
+[debug] --- ASSOCIATION_REPORT
+[debug] --- ASSOCIATION_SET
+[debug] --- ASSOCIATION_SPECIFIC_GROUP_GET
+[debug] --- ASSOCIATION_SPECIFIC_GROUP_REPORT
+[debug] - CommandClass: COMMAND_CLASS_BATTERY
+[debug] -- Version: 1
+[debug] -- Commands:
+[debug] --- BATTERY_GET
+[debug] --- BATTERY_REPORT
+[debug] - CommandClass: COMMAND_CLASS_FIRMWARE_UPDATE_MD
+[debug] -- Version: 3
+[debug] -- Commands:
+[debug] --- FIRMWARE_MD_GET
+[debug] --- FIRMWARE_MD_REPORT
+[debug] --- FIRMWARE_UPDATE_MD_GET
+[debug] --- FIRMWARE_UPDATE_MD_REPORT
+[debug] --- FIRMWARE_UPDATE_MD_REQUEST_GET
+[debug] --- FIRMWARE_UPDATE_MD_REQUEST_REPORT
+[debug] --- FIRMWARE_UPDATE_MD_STATUS_REPORT
+[debug] - CommandClass: COMMAND_CLASS_DEVICE_RESET_LOCALLY
+[debug] -- Version: 1
+[debug] -- Commands:
+[debug] --- DEVICE_RESET_LOCALLY_NOTIFICATION
+[debug] - CommandClass: COMMAND_CLASS_ASSOCIATION_GRP_INFO
+[debug] -- Version: 1
+[debug] -- Commands:
+[debug] --- ASSOCIATION_GROUP_NAME_GET
+[debug] --- ASSOCIATION_GROUP_NAME_REPORT
+[debug] --- ASSOCIATION_GROUP_INFO_GET
+[debug] --- ASSOCIATION_GROUP_INFO_REPORT
+[debug] --- ASSOCIATION_GROUP_COMMAND_LIST_GET
+[debug] --- ASSOCIATION_GROUP_COMMAND_LIST_REPORT
+[debug] - CommandClass: COMMAND_CLASS_POWERLEVEL
+[debug] -- Version: 1
+[debug] -- Commands:
+[debug] --- POWERLEVEL_GET
+[debug] --- POWERLEVEL_REPORT
+[debug] --- POWERLEVEL_SET
+[debug] --- POWERLEVEL_TEST_NODE_GET
+[debug] --- POWERLEVEL_TEST_NODE_REPORT
+[debug] --- POWERLEVEL_TEST_NODE_SET
+[debug] - CommandClass: COMMAND_CLASS_SECURITY
+[debug] -- Version: 1
+[debug] -- Commands:
+[debug] --- NETWORK_KEY_SET
+[debug] --- NETWORK_KEY_VERIFY
+[debug] --- SECURITY_COMMANDS_SUPPORTED_GET
+[debug] --- SECURITY_COMMANDS_SUPPORTED_REPORT
+[debug] --- SECURITY_MESSAGE_ENCAPSULATION
+[debug] --- SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET
+[debug] --- SECURITY_NONCE_GET
+[debug] --- SECURITY_NONCE_REPORT
+[debug] --- SECURITY_SCHEME_GET
+[debug] --- SECURITY_SCHEME_INHERIT
+[debug] --- SECURITY_SCHEME_REPORT
+[debug] - CommandClass: COMMAND_CLASS_VERSION
+[debug] -- Version: 2
+[debug] -- Commands:
+[debug] --- VERSION_COMMAND_CLASS_GET
+[debug] --- VERSION_COMMAND_CLASS_REPORT
+[debug] --- VERSION_GET
+[debug] --- VERSION_REPORT
+[debug] - CommandClass: COMMAND_CLASS_MANUFACTURER_SPECIFIC
+[debug] -- Version: 2
+[debug] -- Commands:
+[debug] --- MANUFACTURER_SPECIFIC_GET
+[debug] --- MANUFACTURER_SPECIFIC_REPORT
+[debug] --- DEVICE_SPECIFIC_GET
+[debug] --- DEVICE_SPECIFIC_REPORT
+[debug] ------------------------------------------
+[debug]  COMMAND_CLASS_SWITCH_BINARY->SWITCH_BINARY_GET args: {} cb: true
+[debug] get onoff
+[debug] get onoff
+[debug] get onoff
+-------------------------------------------------

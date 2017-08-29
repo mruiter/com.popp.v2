@@ -1,0 +1,134 @@
+{
+	"id": "004001",
+	"name": {
+		"en": "Smoke Detector and Siren",
+		"nl": "Rook Detector en Sirene"
+		},
+	"mobile": {
+		"components":[
+			{
+			"id": "icon",
+			"capabilities": ["onoff"]
+			},
+		{
+		"id": "toggle",
+			"capabilities": ["onoff"],
+			"options": { "showTitle": true }
+			},
+			{
+			"id": "battery",
+			"capabilities": ["measure_battery" ],
+			"options": { "showTitle": true }
+			},
+			{
+			"id": "sensor",
+			"capabilities": [ "alarm_smoke", "alarm_tamper", "alarm_battery" ]
+			}
+		]
+	},
+	"zwave": {
+		"manufacturerId": [ 340 ],
+		"productTypeId": [ 256 ],
+		"productId": [ 513 ],
+		"learnmode": {
+		"instruction": {
+			"en": "To Include, hit the little button on the wireless module for 1 second",
+			"nl": "Voor opname in Z-Wave netwerk 1 seconden op het kleine knopje drukken"
+			}
+		},
+		"associationGroups": [ 1, 2, 3 ],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "Z-Wave Plus Lifeline"
+				}
+			},
+			"2": {
+				"hint": {
+					"en": "Alarm Reports"
+				}
+			},
+			"3": {
+				"hint": {
+					"en": "Switch Command when Alarm"
+					}
+				}
+			}
+		},
+	"class": "other",
+	"capabilities": [ "onoff","alarm_smoke","alarm_tamper","measure_battery","alarm_battery" ],
+	"images": {
+		"large": "/drivers/004001/assets/images/large.jpg",
+		"small": "/drivers/004001/assets/images/small.jpg"
+		},
+	"settings": [
+		{
+		"id": 1,
+		"zwave": {
+				"index": 1,
+				"size": 1
+		},
+		"value": 10,
+		"label": {
+			"en": "Siren alarm sequence interval",
+			"nl": "Sirene alarm opeenvolging interval"
+		},
+		"hint": {
+			"en": "The additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly off. This parameter defines the total length of the interval in seconds.",
+			"nl": "De extra sirene maakt een ander akoestisch signaal te onderscheiden van de rookmelder. Dit geluid is deels op en deels uit. Deze parameter definieert de totale lengte van het interval in seconden."
+			},
+		"type": "number"
+		},
+		{
+		"id": 2,
+		"zwave": {
+			"index": 2,
+			"size": 1
+		},
+		"value": 8,
+		"label": {
+			"en": "Siren alarm tone length",
+			"nl": "Sirene alarmtoon lengte"
+			},
+		"hint": {
+			"en": "The additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly off. This parameter defines the total length of the sound versus silence within this interval.",
+			"nl": "De extra sirene maakt een ander akoestisch signaal te onderscheiden van de rookmelder. Dit geluid is deels op en deels uit. Deze parameter definieert de totale lengte van het geluid versus stilte binnen dit interval."
+			},
+		"type": "number"
+		},
+		{
+		"id": 3,
+		"zwave": {
+			"index": 3,
+			"size": 1
+		},
+		"value": 99,
+		"label": {
+			"en": "Value of BASIC On-Command",
+			"nl": "Waarde van Basic On-Commando"
+			},
+		"hint": {
+			"en": "This defines what command is sent into association group 2",
+			"nl": "Dit definieerd welk commando wordt verzonden naar association group 2"
+			},
+		"type": "number"
+		},
+		{
+		"id": 4,
+		"zwave": {
+			"index": 4,
+			"size": 2
+		},
+		"value": 0,
+		"label": {
+			"en": "Value of BASIC Off-Command",
+			"nl": "Waarde van Basic Off-Commando"
+			},
+		"hint": {
+			"en": "This defines what command is sent into  association group 2",
+			"nl": "Dit definieerd welk commando wordt verzonden naar association group 2"
+			},
+		"type": "number"
+		}
+	]
+}
