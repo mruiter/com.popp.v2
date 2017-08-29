@@ -1,0 +1,37 @@
+{
+	"id": "010101",
+	"name": {
+		"en": "Wireless Thermo Valve",
+		"nl": "Draadloze Thermostaat Kraan"
+	},
+	"zwave": {
+		"manufacturerId": 2,
+		"productTypeId": 277,
+		"productId": 40976,
+		"wakeUpInterval": 1800,
+		"learnmode": {
+		"instruction": {
+				"en": "Press the middle button on your POPP Valve",
+				"nl": "Druk op de middelste knop van de POPP Thermostaatkraan"
+			}
+		},
+		"associationGroups": [ 1 ]
+	},
+	"class": "thermostat",
+	"capabilities": [
+		"target_temperature",
+		"measure_temperature",
+		"measure_battery",
+		"alarm_battery"
+	],
+	"capabilitiesOptions": {
+		"target_temperature": {
+			"min": 4,
+			"max": 28
+		}
+	},
+	"images": {
+		"large": "/drivers/010101/assets/images/large.jpg",
+		"small": "/drivers/010101/assets/images/small.jpg"
+	}
+}

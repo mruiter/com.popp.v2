@@ -1,0 +1,99 @@
+{
+    "id": "009501",
+    "name": {
+        "en": "Secure Flow Stop – Valve Shut-Off",
+        "nl": "Secure Flow Stop – Valve Shut-Off"
+        },
+            "zwave": {
+                "manufacturerId": 340,
+                "productTypeId": 3,
+                "productId": 1298,
+                "learnmode": {
+                    "image": "/drivers/009501/assets/learnmode.svg",
+                    "instruction": {
+                        "en": "For inclusion and exclusion press the red button on the top of the enclosure 3 times",
+                        "nl": "Voor inlcusion of exclusion drukt u op de rode knop boven op de behuizing 3 keer"
+                    }
+                },
+                "associationGroups": [1,1]
+            },
+            "class": "socket",
+			"capabilities": [ "onoff" ],
+            "images": {
+                "large": "/drivers/009501/assets/images/large.jpg",
+                "small": "/drivers/009501/assets/images/small.jpg"
+            },
+            "settings": [
+				{
+					"id": "led_status",
+					"zwave": {
+						"index": 0,
+						"size": 1
+					},
+					"type": "checkbox",
+					"label": {
+						"en": "LED Mode",
+						"nl": "LED Modus"
+					},
+					"value": true,
+					"hint": {
+						"en": "Led always on or off. Default: enabled",
+						"nl": "Led altijd aan of uit. Standaard: ingeschakeld"
+					}
+				},
+				{
+					"id": "shutoff_behavior",
+					"zwave": {
+						"index": 1,
+						"size": 1
+					},
+					"type": "dropdown",
+					"label": {
+						"en": "Shut-off controller behavior",
+						"nl": "Shut-off controller gedrag"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Choose youre off color",
+						"nl": "Kies u kleur bij uitstand"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Remote and manually open/close(default)",
+								"nl": "Afstandsbediening en handmatig openen / sluiten(standaard)"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Remote open/close only",
+								"nl": "Afstandsbediening alleen open / sluiten"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Only remote open; only manually closing",
+								"nl": "Alleen afstandsbediening open; Alleen handmatig sluiten"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Only manually open; only remote closing",
+								"nl": "Alleen handmatig open; Alleen afstandsbediening sluiten"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Manually open/close only",
+								"nl": "Handmatig open / sluiten alleen"
+							}
+						}
+					]
+				}
+			]
+        }

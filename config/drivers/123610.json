@@ -1,0 +1,163 @@
+{
+   "id":"123610",
+   "name":{
+      "en":"Switch 68G"
+   },
+   "zwave":{
+      "manufacturerId":340,
+      "productTypeId":514,
+      "productId":1297,
+      "learnmode":{
+         "image":"/drivers/123610/assets/learnmode.svg",
+         "instruction":{
+            "en":"Press the (action) button three times on the Smart Switch to enter learn mode",
+            "nl":"Druk drie keer op de (actie) knop op de Smart Switch om de leer modus te activeren"
+         }
+      },
+      "associationGroups":[
+         1
+      ]
+   },
+   "class":"socket",
+   "capabilities":[
+      "onoff"
+   ],
+   "images":{
+      "large":"/drivers/123610/assets/images/large.png",
+      "small":"/drivers/123610/assets/images/small.png"
+   },
+   "settings":[
+      {
+         "id":1,
+		 "zwave": {
+			"index": 1,
+			"size": 1
+		 },
+         "type":"dropdown",
+         "label":{
+            "en":"Led mode",
+            "nl":"Led mode"
+         },
+         "value":"3",
+         "hint":{
+            "en":"Set LED indication mode",
+            "nl":"Configureer de LED indicatie mode"
+         },
+         "values":[
+            {
+               "id":"0",
+               "label":{
+                  "en":"Disabled",
+                  "nl":"Uitgeschakeld"
+               }
+            },
+            {
+               "id":"1",
+               "label":{
+                  "en":"Show switch state",
+                  "nl":"Toon de status (aan/uit)"
+               }
+            },
+            {
+               "id":"2",
+               "label":{
+                  "en":"Night mode (inverted switch state)",
+                  "nl":"Nacht modes (omgekeerde status)"
+               }
+            },
+            {
+               "id":"3",
+               "label":{
+                  "en":"Operated by Indicator Command Class (Default)",
+                  "nl":"Werking volgens de configuratie van de Command Class (Standaard)"
+               }
+            }
+         ]
+      },
+      {
+         "id":2,
+		 "zwave": {
+			"index": 2,
+			"size": 2
+		 },
+         "type":"number",
+         "label":{
+            "en":"Automatically switch off after",
+            "nl":"Automatisch uitschakelen na"
+         },
+         "value":0,
+         "attr":{
+            "min":0,
+            "max":65535
+         },
+         "hint":{
+            "en":"If not zero, automatically switch off after a user defined time. Unit: Sec, Min: 0, Max: 65535, Default: 0",
+            "nl":"Als waarde niet 0 is dan uitschakelen na de opgegeven tijd. Eenheid sec., Min: 0, Max: 65535, Default: 0"
+         }
+      },
+      {
+         "id":3,
+		 "zwave": {
+			"index": 3,
+			"size": 1
+		 },
+         "type":"dropdown",
+         "label":{
+            "en":"What to do on RF off com",
+            "nl":"Wat moet er gebeuren bij RF uit commando"
+         },
+         "value":"0",
+         "hint":{
+            "en":"Defines how to interpret RF Off command. Can be used in conjunction with Auto Off function: Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics; Switch on - to switch on the light on both On and Off paddle press on the remote and switch it off after some amount of time. Button off click will still work (if button operations are not disabled).",
+            "nl":"Defineert hoe moet worden gereageerd op RF off commando. Kan samen met Auto Off functie worden gebruikt: Negeren - om lampen aan te zetten in geval van beweging om vervolgens uit te schakelen na een bepaalde periode. In geval van meerdere bewegings sensoren zullen ze afzonderlijk de lamp proberen uit te zetten. Dat kan soms niet handig zijn. Aan zetten - Om de dimmer aan te zetten met zowel aan- als uit opdracht van de afstandbediening om vervolgens na een bepaalde periode uit te gaan. De uitknop zal dan nog steeds werken (wanneer de knop opdracht niet zijn uitgeschakeld.)"
+         },
+         "values":[
+            {
+               "id":"0",
+               "label":{
+                  "en":"Switch off (Default)",
+                  "nl":"Uit zetten (Standaard)"
+               }
+            },
+            {
+               "id":"1",
+               "label":{
+                  "en":"Ignore",
+                  "nl":"Negeren"
+               }
+            },
+            {
+               "id":"2",
+               "label":{
+                  "en":"Switch on",
+                  "nl":"Aan zetten"
+               }
+            },
+            {
+               "id":"3",
+               "label":{
+                  "en":"Switch on if load is off else switch off",
+                  "nl":"Aan gaan wanneer er geen spanning is, ander uitschakelen"
+               }
+            }
+         ]
+      },
+      {
+         "id":5,
+		 "zwave": {
+			"index": 5,
+			"size": 1
+		 },
+         "type":"checkbox",
+         "label":{
+            "en":"Switch state after power cycle",
+            "nl":"Schakelaar status na power restore"
+         },
+         "value":true,
+         "hint":{
+            "en":"Defines if if the switch will go back to its previous state before loss of power",
+            "nl":"Defineert of de schakelaar terug gaat in zijn vorige status na spannings uitval/verlies."
+         }
+      }
+   ]
+}

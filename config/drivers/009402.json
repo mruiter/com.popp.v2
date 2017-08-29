@@ -1,0 +1,163 @@
+{
+	"id": "009402",
+	"name": {
+		"en": "10 Year Smoke Detector and Siren",
+		"nl": "10 Year Smoke Detector and Siren"
+	},
+	"mobile": {
+		"components":[
+			{
+			"id": "icon",
+			"capabilities": ["onoff"]
+			},
+			{
+			"id": "toggle",
+			"capabilities": ["onoff"],
+			"options": { "showTitle": true }
+			},
+			{
+			"id": "battery",
+			"capabilities": ["measure_battery" ],
+			"options": { "showTitle": true }
+			},
+			{
+			"id": "sensor",
+			"capabilities": [ "alarm_smoke", "alarm_tamper", "alarm_battery" ]
+			}
+		]
+	},
+	"zwave": {
+		"manufacturerId": [340],
+		"productTypeId": [4],
+		"productId": [4],
+		"learnmode": {
+		"instruction": {
+			"en": "To include the device start the inclusion on your controller and then hit the little button on the wireless module for 1 second",
+			"nl": "Om het apparaat op te nemen start het inclusion proces op uw controller en druk dan de kleine knop op de draadloze module gedurende 1 seconde"
+			}
+		},
+		"associationGroups": [ 1, 2, 3 ],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+				"en": "Z-Wave Plus Lifeline",
+				"nl": "Z-Wave Plus Lifeline"
+					}
+				},
+			"2": {
+				"hint": {
+				"en": "Alarm Reports. All devices in this group will receive Alarm notifications (Smoke , Battery Low, Tamper)",
+				"nl": "Alarmrapporten. Alle apparaten in deze groep ontvangen alarmmeldingen (Rook, Lage Accu, Sabotage"
+					}
+				},
+			"3": {
+				"hint": {
+				"en": "Switching Command. All devices in this group will receive a BASIC SET command on Smoke Alarms. Configuration parameter 3 and 4 will define when ON and when OFF is sent.",
+				"nl": "Switching Command. Alle apparaten in deze groep krijgen een BASIC SET commando op smoke alarms. Configuratieparameters 3 en 4 zullen bepalen wanneer ON en wanneer OFF is verzonden."
+					}
+				}
+			}
+		},
+		"defaultConfiguration": [
+			{
+			"id": 1,
+			"size": 1,
+			"value": 10
+			},
+			{
+			"id": 2,
+			"size": 1,
+			"value": 8
+			},
+			{
+			"id": 3,
+			"size": 1,
+			"value": 99
+			},
+			{
+			"id": 3,
+			"size": 1,
+			"value": 0
+			}
+		],
+		"class": "other",
+		"capabilities": [ "onoff","alarm_smoke","alarm_tamper","measure_battery","alarm_battery" ],
+		"images": {
+			"large": "/drivers/009402/assets/images/large.jpg",
+			"small": "/drivers/009402/assets/images/small.jpg"
+			},
+		"settings": [
+			{
+			"id": 1,
+			"zwave": {
+				"index": 1,
+				"size": 1
+			},
+			"value": 10,
+			"label": {
+				"en": "Siren alarm sequence interval",
+				"nl": "Siren alarm sequence interval"
+			},
+			"hint": {
+				"en": "The additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly off. This parameter defines the total length of the interval in seconds.",
+				"nl": "De extra sirene zorgt voor een ander akoestisch signaal dat onderscheidt van het rookalarm. Dit geluid is gedeeltelijk aan en gedeeltelijk af. Deze parameter definieert de totale lengte van het interval in seconden."
+			},
+			"_size": 1,
+			"type": "number"
+			},
+			{
+			"id": 2,
+			"zwave": {
+				"index": 2,
+				"size": 1
+			},
+			"value": 8,
+			"label": {
+				"en": "Siren alarm tone length",
+				"nl": "Siren alarm toon lengte"
+			},
+			"hint": {
+				"en": "The additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly off. This parameter defines the total length of the sound versus silence within this interval. Please make sure this value is always smaller (shorter time) than parameter 1 that defines the whole sequence.",
+				"nl": "De extra sirene zorgt voor een ander akoestisch signaal dat onderscheidt van het rookalarm. Dit geluid is gedeeltelijk aan en gedeeltelijk af. Deze parameter bepaalt de totale lengte van het geluid versus stilte binnen dit interval. Zorg ervoor dat deze waarde altijd kleiner is (kortere tijd) dan parameter 1 die de hele volgorde definieert."
+			},
+			"_size": 1,
+			"type": "number"
+			},
+			{
+			"id": 3,
+			"zwave": {
+				"index": 3,
+				"size": 1
+			},
+			"value": true,
+			"label": {
+				"en": "Value of On-Command",
+				"nl": "Waarde van On-Commando"
+			},
+			"hint": {
+				"en": "This value is sent as BASIC Set to Association Group 3 when an Smoke Alarm occurs. If 255 can not be entered in your gateway use -1.",
+				"nl": "Deze waarde wordt verzonden als BASIC Set to Association Group 3 als er een rookmelder optreedt. Als 255 niet in uw gateway kan worden ingevoerd, gebruikt u -1."
+			},
+			"_size": 1,
+			"type": "checkbox"
+			},
+			{
+			"id": 4,
+			"zwave": {
+				"index": 4,
+				"size": 1
+			},
+			"value": true,
+			"label": {
+				"en": "Value of Off-Command",
+				"nl": "Waarde van Off-Commando"
+			},
+			"hint": {
+				"en": "This value is sent as BASIC Set to Association Group 3 when an Smoke Alarm is cleared. If 255 can not be entered in your gateway use -1.",
+				"nl": "Deze waarde wordt verzonden als BASIC Set to Association Group 3 als een rookmelder is gewist. Als 255 niet in uw gateway kan worden ingevoerd, gebruikt u -1."
+			},
+			"_size": 1,
+			"type": "checkbox"
+			}
+		]
+}

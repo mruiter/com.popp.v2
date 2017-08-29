@@ -1,0 +1,213 @@
+{
+	"id": "700168",
+	"name": {
+		"en": "Z-Rain - Rain Sensor",
+		"nl": "Z-Rain - Regen Sensor"
+	},
+	"capabilities": [
+		"meter_rain",
+		"measure_rain",
+		"measure_battery",
+		"alarm_battery",
+		"alarm_rain"
+	],
+	"mobile": {
+		"components":[
+			{
+			  "id": "icon"
+			},
+			{
+				"id": "battery",
+				"capabilities": ["measure_battery" ],
+				"options": { "showTitle": true }
+			},
+			{
+				"id": "sensor",
+				"capabilities": ["meter_rain","measure_rain","alarm_battery"]
+			}
+		]
+	},
+		"zwave": {
+			"manufacturerId": 340,
+			"productTypeId": 4,
+			"productId": 17,
+			"learnmode": {
+				"instruction": {
+					"en": "1. Open the base and the electronics block. Ensure charged batteries are placed. Use a pin to push the Z-Wave button 1 time. If this doesn't work you can try with pushing 3 times.",
+					"nl": "1. Open de behuizing en het electonica blok. Zorg dat er opgeladen batterijen aanwezig zijn. Gebruik een pinnetje om de Z-Wave knop 1 keer in te drukken. Als dit niet werkt kan het helpen om 3 keer snel te drukken."
+				}
+		},
+			"associationGroups": [ 1,2,3 ],
+			"associationGroupsOptions": {
+		    "1": {
+			    "hint": {
+				"en": "Z-Wave Plus Lifeline"
+				}
+		    },
+		    "2": {
+				"hint": {
+				    "en": "Switching Command when Rain (> 0 mm/h). Basic Set Command is sent."
+			    }
+		    },
+		    "3": {
+			   "hint": {
+				   "en": "Heavy Rain detected. Basic Set Command is sent."
+			   	   }
+			   }
+		   },
+		   "defaultConfiguration": [
+			{
+				"id": 2,
+				"size": 1,
+				"value": 99
+			},
+			{
+				"id": 3,
+				"size": 1,
+				"value": 0
+			},
+			{
+				"id": 6,
+				"size": 1,
+				"value": 98
+			},
+			{
+				"id": 7,
+				"size": 1,
+				"value": 1
+			}]
+		},
+		"class": "sensor",
+		"images": {
+			"large": "/drivers/700168/assets/images/large.jpg",
+			"small": "/drivers/700168/assets/images/small.jpg"
+		},
+		"settings": [
+			{
+				"id": "rain_counter",
+				"zwave": {
+					"index": 1,
+					"size": 2
+				},
+				"value": 0,
+				"type": "number",
+				"label": {
+					"en": "Total rain counter",
+					"nl": "Totale regen teller"
+					},
+				"hint": {
+					"en": "This values shows the total count of rain from the moment of inclusion in mm water level. By writing this value this counter can be reset. (0-32000)",
+					"nl": "Deze waarde geeft de totale hoeveelheid regen vanaf het toevoegen aan de controler in mm weer. Door het instellen van deze waarde kan de teller gereset worden (0-32000)"
+					},
+				"attr": {
+					"min": 0,
+					"max": 32000
+					}
+			},
+			{
+				"id": "rain_start_command",
+				"zwave": {
+					"index": 2,
+					"size": 1
+				},
+				"value": 99,
+				"label": {
+					"en": "Rain start command",
+					"nl": "Regen start commando"
+				},
+				"hint": {
+					"en": "This BASIC Set Command value is sent out into Association Group 2 when the device detects start of rain",
+					"nl": "Dit BASIC Set commando wordt naar association group 2 gestuurd als er regen wordt waargenomen."
+				},
+				"type": "number",
+				"attr": {
+					"min": 0,
+					"max": 99
+					}
+			},
+			{
+				"id": "rain_stop_command",
+				"zwave": {
+					"index": 3,
+					"size": 1
+				},
+				"value": 0,
+				"label": {
+					"en": "Rain stop command",
+					"nl": "Regen stop commando"
+				},
+				"hint": {
+					"en": "This BASIC Set Command value is sent out into Association Group 2 when the device detects stop of rain",
+					"nl": "Dit BASIC Set commando wordt naar association group 2 gestuurd als er geen regen meer wordt waargenomen."
+				},
+				"type": "number",
+				"attr": {
+					"min": 0,
+					"max": 99
+					}
+			},
+			{
+				"id": "heavy_rain",
+				"zwave": {
+					"index": 5,
+					"size": 1
+				},
+				"value": 255,
+				"type": "number",
+				"label": {
+					"en": "Heavy rain definition.",
+					"nl": "Zware regen definitie."
+					},
+				"hint": {
+                    "en": "This threshold defines when a heavy rain condition is hit in mm/hour. In most countries this is defined as > 15 mm rain per hour. The default value however is to turn this function off.",
+					"nl": "Stelt in wat als zware regen wordt gezien in mm/uur. In de meeste landen is dit > 15 mm regen per uur. Standaard staat deze functie uit."
+					},
+				"attr": {
+					"min": 0,
+					"max": 255
+					}
+			},
+			{
+				"id": "heavy_rain_start_command",
+				"zwave": {
+					"index": 6,
+					"size": 1
+				},
+				"value": 98,
+				"label": {
+					"en": "Heavy rain start command",
+					"nl": "Zware regen start commando"
+				},
+				"hint": {
+					"en": "This BASIC Set Command value is sent out into Association Group 3 when the device detects start of heavy rain",
+					"nl": "Dit BASIC Set commando wordt naar association group 3 gestuurd als er zware regen wordt waargenomen."
+				},
+				"type": "number",
+				"attr": {
+					"min": 0,
+					"max": 99
+					}
+			},
+			{
+				"id": "heavy_rain_stop_command",
+				"zwave": {
+					"index": 7,
+					"size": 1
+				},
+				"value": 1,
+				"label": {
+					"en": "Heavy rain stop command",
+					"nl": "Zware regen stop commando"
+				},
+				"hint": {
+					"en": "This BASIC Set Command value is sent out into Association Group 3 when the device detects stop of heavy rain",
+					"nl": "Dit BASIC Set commando wordt naar association group 3 gestuurd als er geen zware regen meer wordt waargenomen."
+				},
+				"type": "number",
+				"attr": {
+					"min": 0,
+					"max": 99
+					}
+			}
+	]
+}

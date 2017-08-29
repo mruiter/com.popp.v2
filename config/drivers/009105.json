@@ -1,15 +1,15 @@
 {
-    "id": "009006",
+    "id": "009105",
     "name": {
-		"en": "Wall Plug Switch Indoor",
-        "nl": "Wall Plug Switch Indoor"
+		"en": "Wall Plug Switch Outdoor",
+        "nl": "Wall Plug Switch Outdoordoor"
         },
         "zwave": {
-            "manufacturerId": 100,
-            "productTypeId": 12289,
-            "productId": 0,
+            "manufacturerId": [100, 340],
+            "productTypeId": [0 , 3],
+            "productId": [0 , 1],
             "learnmode": {
-                "image": "/drivers/009006/assets/learnmode.svg",
+                "image": "/drivers/009105/assets/learnmode.svg",
                 "instruction": {
                     "en": "Press button three times",
                     "nl": "Druk driemaal op knop"
