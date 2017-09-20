@@ -3,13 +3,12 @@
 	"mobile": {
 		"components":[
 			{
-			"id": "icon",
-			"capabilities": ["onoff"]
+			"id": "icon"
 			},
 			{
 			"id": "toggle",
 			"capabilities": ["onoff"],
-			"options": { "showTitle": true }
+			"options": { "showTitle": true , "greyout": false}
 			},
 			{
 			"id": "battery",

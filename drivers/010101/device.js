@@ -5,8 +5,8 @@ const ZwaveDevice = require('homey-meshdriver').ZwaveDevice;
 
 class P010101 extends ZwaveDevice {
 	onMeshInit() {
-		this.enableDebug();
-		this.printNode();
+		// this.enableDebug();
+		// this.printNode();
 		this.registerCapability('measure_temperature', 'SENSOR_MULTILEVEL');
 		this.registerCapability('target_temperature', 'THERMOSTAT_SETPOINT');
 		this.registerCapability('alarm_battery', 'BATTERY');

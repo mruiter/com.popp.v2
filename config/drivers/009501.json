@@ -5,7 +5,7 @@
         "nl": "Secure Flow Stop – Valve Shut-Off"
         },
             "zwave": {
-                "manufacturerId": 340,
+                "manufacturerId": [340 , 338],
                 "productTypeId": 3,
                 "productId": 1298,
                 "learnmode": {

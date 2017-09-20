@@ -10,10 +10,10 @@ class P005107 extends ZwaveDevice {
 		this.registerCapability('onoff', 'SWITCH_BINARY');
 		this.registerCapability('measure_temperature', 'SENSOR_MULTILEVEL');
 		this.registerCapability('alarm_tamper', 'SENSOR_BINARY');	
-		this.registerCapability('alarm_tamper', 'BATTERY');
+		this.registerCapability('alarm_battery', 'BATTERY');
 		this.registerCapability('measure_battery', 'BATTERY');
 	}
 
 }
 
-module.exports = P005007;
+module.exports = P005107;
